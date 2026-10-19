@@ -28,5 +28,5 @@ py -m http.server 8000
 - `index.html` / `app.js`：页面与逻辑
 - `data/`：机身、镜头、手机、工位、说明文案
 - `libs/`：three.js r137 及加载器
-- `models/`：CZ-8A（网页用 285KB 降面代理）、CZ-12 外部 OBJ
+- `models/`：CZ-8A、CZ-12 外部 OBJ（全质量，未降面）
 - `.nojekyll`：GitHub Pages 用

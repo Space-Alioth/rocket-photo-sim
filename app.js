@@ -234,9 +234,13 @@ function hideLoadToast() {
   el.classList.remove("show");
   el.setAttribute("aria-hidden", "true");
 }
+function finishBoot() {
+  showLoadToast("加载完成", 100);
+  setTimeout(hideLoadToast, 450);
+}
 function loadModel(entry) {
   $("#status").textContent = "正在加载模型：" + entry.id + " …";
-  showLoadToast("正在加载模型：" + entry.id + " …", null);
+  showLoadToast("正在加载火箭模型：" + entry.id + " …", 40);
   clearRocket();
   const objLoader = new THREE.OBJLoader();
   objLoader.setPath(entry.dir);
@@ -250,13 +254,14 @@ function loadModel(entry) {
     currentHeight = box.max.y - box.min.y;
     setupParts(obj);
     $("#status").textContent = "已加载：" + entry.id + "（高 " + currentHeight.toFixed(1) + " m）";
-    showLoadToast("模型已加载：" + entry.id + "（高 " + currentHeight.toFixed(1) + " m）", 100);
-    setTimeout(hideLoadToast, 700);
+    showLoadToast("正在初始化画面…", 97);
     render();
+    setTimeout(finishBoot, 300);
   }, (xhr) => {
     let pct = null;
     if (xhr && xhr.total) pct = Math.round((xhr.loaded / xhr.total) * 100);
-    showLoadToast("正在加载模型：" + entry.id + " …" + (pct === null ? "" : " " + pct + "%"), pct);
+    const overall = pct === null ? 40 : 40 + Math.round(55 * pct / 100);
+    showLoadToast("正在加载火箭模型：" + entry.id + " … " + overall + "%", overall);
   }, (err) => {
     $("#status").textContent = "模型加载失败：" + err;
     showLoadToast("模型加载失败：" + entry.id + "，请刷新重试", 0, true);
@@ -275,15 +280,24 @@ let SITES = [];
 let mode = "camera";
 
 function loadData() {
+  showLoadToast("正在加载机型数据…", 18);
+  let done = 0;
+  const total = 5;
+  const track = (p) => p.then((v) => {
+    done++;
+    showLoadToast("正在加载机型数据… " + done + "/" + total, 18 + Math.round(18 * done / total));
+    return v;
+  });
   return Promise.all([
-    fetch("data/cameras.json").then((r) => r.json()),
-    fetch("data/lenses.json").then((r) => r.json()),
-    fetch("data/phones.json").then((r) => r.json()),
-    fetch("data/sites.json").then((r) => r.json()),
-    fetch("data/notes.json").then((r) => r.json()).catch(() => ({})),
+    track(fetch("data/cameras.json").then((r) => r.json())),
+    track(fetch("data/lenses.json").then((r) => r.json())),
+    track(fetch("data/phones.json").then((r) => r.json())),
+    track(fetch("data/sites.json").then((r) => r.json())),
+    track(fetch("data/notes.json").then((r) => r.json()).catch(() => ({}))),
   ]).then(([c, l, p, s, notes]) => {
     DATA.cameras = c; DATA.lenses = l; DATA.phones = p; SITES = s;
     Object.assign(NOTES, notes || {});
+    showLoadToast("数据已加载，准备模型…", 38);
   });
 }
 
@@ -1741,6 +1755,7 @@ function bindUI() {
 }
 
 // ---------------- 启动 ----------------
+showLoadToast("正在加载页面资源…", 8);
 updateOffsetLabel();
 loadData().then(() => {
   buildSelects();
@@ -1755,4 +1770,5 @@ loadData().then(() => {
 }).catch((err) => {
   const st = $("#status");
   if (st) st.textContent = "数据加载失败：请用本地 http 服务打开（本地预览.bat）。" + err;
+  showLoadToast("网站加载失败：数据未加载，请刷新重试", 0, true);
 });

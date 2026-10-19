@@ -294,6 +294,12 @@
 </style>
 </head>
 <body>
+<!-- 全站加载提示：从页面解析开始就显示 -->
+<div id="loadToast" class="show" role="status" aria-live="polite" aria-hidden="false">
+  <div id="loadToastTitle">正在加载网站…</div>
+  <div id="loadToastTrack"><div id="loadToastFill"></div></div>
+</div>
+
 <div id="app">
   <div id="panel">
     <nav id="topnav">
@@ -471,12 +477,6 @@
 
 <!-- 悬浮气泡 -->
 <div id="tip"></div>
-
-<!-- 模型加载提示 -->
-<div id="loadToast" role="status" aria-live="polite" aria-hidden="true">
-  <div id="loadToastTitle">正在加载模型…</div>
-  <div id="loadToastTrack"><div id="loadToastFill"></div></div>
-</div>
 
 <!-- 地图选点弹层 -->
 <div id="mapModal">
