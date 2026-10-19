@@ -416,7 +416,7 @@ function groupByBrand(items) {
   return m;
 }
 const currentSite = () => SITES[$("site").selectedIndex] || SITES[0];
-const MOUNT_SHORT = { "Sony E": "E", "Canon RF": "RF", "Nikon Z": "Z", "Nikon F": "F", "Fujifilm G": "GF", "Hasselblad X": "XCD" };
+const MOUNT_SHORT = { "Sony E": "E", "Canon RF": "RF", "Nikon Z": "Z", "Nikon F": "F", "Fujifilm G": "GF", "Hasselblad X": "XCD", "L-Mount": "L", "M4/3": "M43" };
 function shortMount(m) { return MOUNT_SHORT[m] || m || ""; }
 function lensLabel(l) {
   const firstParty = ["索尼", "佳能", "尼康", "富士", "哈苏"];
@@ -426,8 +426,8 @@ function lensLabel(l) {
 function cmpLens(a, b) {
   return (b.focalMax - a.focalMax) || (b.focalMin - a.focalMin) || a.model.localeCompare(b.model, "zh");
 }
-function sortedLensesForBrand(brand) {
-  return DATA.lenses.filter((x) => x.brand === brand).sort(cmpLens);
+function sortedLensesForBrand(brand, mount) {
+  return DATA.lenses.filter((x) => x.brand === brand && (!mount || x.mount === mount)).sort(cmpLens);
 }
 function getBody() {
   const list = bodyList().filter((x) => x.brand === $("camBrand").value);
@@ -438,7 +438,8 @@ function getLens() {
   if (!b) return null;
   const idx = $("lensModel").selectedIndex;
   if (idx <= 0) return null;
-  return sortedLensesForBrand(b)[idx - 1] || null;
+  const body = getBody();
+  return sortedLensesForBrand(b, body ? body.mount : null)[idx - 1] || null;
 }
 function getPhone() {
   const list = DATA.phones.filter((x) => x.brand === $("phoneBrand").value);
@@ -606,8 +607,8 @@ function updateCamera() {
 }
 
 // ---------------- 搭配校验 ----------------
-const FMT_ORDER = { "半画幅": 1, "全画幅": 2, "中画幅": 3 };
-const shortFmt = (f) => (f || "").slice(0, 1) + "幅";
+const FMT_ORDER = { "M4/3": 0, "半画幅": 1, "全画幅": 2, "中画幅": 3 };
+const shortFmt = (f) => f === "M4/3" ? "M4/3" : (f || "").slice(0, 1) + "幅";
 function computeWarnings() {
   const list = [];
   if (mode === "camera") {
@@ -632,7 +633,7 @@ function computeWarnings() {
   } else if (mode === "phone") {
     const p = getPhone();
     if (p && getZoom() > p.maxOptical + 1e-6) {
-      list.push({ title: null, text: "超过 " + p.maxOptical + " 倍就要变成数码变焦了，画质会降低哦！" });
+      list.push({ title: null, text: "超过 " + (Math.round(p.maxOptical * 100) / 100) + " 倍就要变成数码变焦了，画质会降低哦！" });
     }
   }
   return list;
@@ -668,7 +669,7 @@ function updateInfo() {
     rows.push(["型号", S.name]);
     rows.push(["放大倍率", getZoom().toFixed(1) + "×"]);
     rows.push(["等效焦距", focalSpec().toFixed(1) + " mm"]);
-    rows.push(["最大光学", p.maxOptical + "×"]);
+    rows.push(["最大光学", (Math.round(p.maxOptical * 100) / 100) + "×"]);
   } else {
     rows.push(["设备", S.name]);
     rows.push(["传感器", S.w.toFixed(2) + "×" + S.h.toFixed(2) + " mm"]);
@@ -1576,6 +1577,7 @@ function initBrandModel(brandSel, modelSel, items, onChange) {
   modelSel.onchange = onChange;
   rebuild();
 }
+let lensRebuild = null;
 function initLens(onChange) {
   const lb = $("#lensBrand"), lm = $("#lensModel");
   const brands = Array.from(new Set(DATA.lenses.map((l) => l.brand)));
@@ -1583,6 +1585,12 @@ function initLens(onChange) {
   lb.add(new Option("（手动焦距，不选镜头）", ""));
   brands.forEach((b) => lb.add(new Option(b, b)));
   const rebuild = () => {
+    const body = getBody();
+    let candidates = lb.value ? sortedLensesForBrand(lb.value, body ? body.mount : null) : [];
+    if (lb.value && !candidates.length) {
+      lb.value = "";
+      candidates = [];
+    }
     const manual = (lb.value === "");
     const row = lb.closest(".lensrow");
     if (row) row.classList.toggle("manual", manual);
@@ -1590,16 +1598,18 @@ function initLens(onChange) {
     lm.innerHTML = "";
     if (!manual) {
       lm.add(new Option("（请选择镜头）", ""));
-      sortedLensesForBrand(lb.value).forEach((l) => lm.add(new Option(lensLabel(l), l.model)));
+      candidates.forEach((l) => lm.add(new Option(lensLabel(l), l.model)));
       lm.selectedIndex = 0;
     }
   };
+  lensRebuild = rebuild;
   lb.onchange = () => { rebuild(); updateFocalUI(); onChange(); };
   lm.onchange = () => { updateFocalUI(); onChange(); };
   rebuild();
   updateFocalUI();
 }
 function onSelectChange() { resize(); refreshAll(); updatePhoneStops(); }
+function onCameraChange() { if (lensRebuild) lensRebuild(); onSelectChange(); }
 
 function updatePhoneStops() {
   const box = $("#phoneStops");
@@ -1612,7 +1622,7 @@ function updatePhoneStops() {
   stops.forEach((s) => {
     const b = document.createElement("button");
     b.type = "button";
-    b.textContent = (Math.round(s.zoom * 10) / 10) + "×";
+    b.textContent = s.label || ((Math.round(s.zoom * 10) / 10) + "×");
     b.title = "等效焦距 " + s.equiv + " mm";
     b.onclick = () => {
       $("#zoom").value = s.zoom;
@@ -1645,10 +1655,10 @@ function buildSelects() {
   const ssel = $("#site");
   ssel.innerHTML = "";
   SITES.forEach((s) => ssel.add(new Option(s.name, s.id)));
-  ssel.onchange = () => { rebuildModelSelect(); resize(); refreshAll(); };
+  ssel.onchange = () => { rebuildModelSelect(); onCameraChange(); };
   rebuildModelSelect();
 
-  initBrandModel($("#camBrand"), $("#camModel"), bodyList(), onSelectChange);
+  initBrandModel($("#camBrand"), $("#camModel"), bodyList(), onCameraChange);
   initLens(onSelectChange);
   initBrandModel($("#phoneBrand"), $("#phoneModel"), DATA.phones, onSelectChange);
   initBrandModel($("#otherBrand"), $("#otherModel"), otherList(), onSelectChange);
@@ -1775,15 +1785,17 @@ function setupSearch() {
       const list = bodyList().filter((x) => x.brand === it.brand);
       const idx = list.findIndex((x) => x === it);
       if (idx >= 0) $("#camModel").selectedIndex = idx;
-      onSelectChange();
+      onCameraChange();
     });
 
-  setupOneSearch("lensSearch", "lensSearchRes", () => DATA.lenses,
+  setupOneSearch("lensSearch", "lensSearchRes",
+    () => { const b = getBody(); return DATA.lenses.filter((x) => !b || x.mount === b.mount); },
     (it) => it.brand + " " + lensLabel(it),
     (it) => {
       $("#lensBrand").value = it.brand;
       $("#lensBrand").dispatchEvent(new Event("change"));
-      const list = sortedLensesForBrand(it.brand);
+      const body = getBody();
+      const list = sortedLensesForBrand(it.brand, body ? body.mount : null);
       const idx = list.findIndex((x) => x === it);
       if (idx >= 0) $("#lensModel").selectedIndex = idx + 1;
       updateFocalUI();

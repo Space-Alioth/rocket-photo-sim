@@ -274,14 +274,17 @@
     "maxOptical": 5,
     "lenses": [
       {
-        "zoom": 0.5,
-        "equiv": 12
+        "label": "0.5×",
+        "zoom": 0.5416666666666666,
+        "equiv": 13
       },
       {
+        "label": "1×",
         "zoom": 1,
         "equiv": 24
       },
       {
+        "label": "5×",
         "zoom": 5,
         "equiv": 120
       }
@@ -294,14 +297,17 @@
     "maxOptical": 5,
     "lenses": [
       {
-        "zoom": 0.5,
-        "equiv": 12
+        "label": "0.5×",
+        "zoom": 0.5416666666666666,
+        "equiv": 13
       },
       {
+        "label": "1×",
         "zoom": 1,
         "equiv": 24
       },
       {
+        "label": "5×",
         "zoom": 5,
         "equiv": 120
       }
@@ -927,23 +933,27 @@
     "brand": "三星",
     "model": "Galaxy S24 Ultra",
     "mainEquiv": 24,
-    "maxOptical": 5,
+    "maxOptical": 4.63,
     "lenses": [
       {
-        "zoom": 0.5,
-        "equiv": 12
+        "label": "0.5×",
+        "zoom": 0.5416666666666666,
+        "equiv": 13
       },
       {
+        "label": "1×",
         "zoom": 1,
         "equiv": 24
       },
       {
-        "zoom": 3,
-        "equiv": 72
+        "label": "3×",
+        "zoom": 2.7916666666666665,
+        "equiv": 67
       },
       {
-        "zoom": 5,
-        "equiv": 120
+        "label": "5×",
+        "zoom": 4.625,
+        "equiv": 111
       }
     ]
   },
@@ -1462,20 +1472,23 @@
   {
     "brand": "华为",
     "model": "Mate 70 Pro",
-    "mainEquiv": 27,
-    "maxOptical": 3.5,
+    "mainEquiv": 24.5,
+    "maxOptical": 3.78,
     "lenses": [
       {
-        "zoom": 0.5,
+        "label": "0.5×",
+        "zoom": 0.5306122448979592,
         "equiv": 13
       },
       {
+        "label": "1×",
         "zoom": 1,
-        "equiv": 27
+        "equiv": 24.5
       },
       {
-        "zoom": 3.5,
-        "equiv": 95
+        "label": "4×",
+        "zoom": 3.7755102040816326,
+        "equiv": 92.5
       }
     ]
   },
@@ -2459,23 +2472,27 @@
     "brand": "小米",
     "model": "15 Ultra",
     "mainEquiv": 23,
-    "maxOptical": 4.3,
+    "maxOptical": 4.35,
     "lenses": [
       {
-        "zoom": 0.5,
-        "equiv": 12
+        "label": "0.6×",
+        "zoom": 0.6086956521739131,
+        "equiv": 14
       },
       {
+        "label": "1×",
         "zoom": 1,
         "equiv": 23
       },
       {
-        "zoom": 3.2,
-        "equiv": 74
+        "label": "3×",
+        "zoom": 3.0434782608695654,
+        "equiv": 70
       },
       {
-        "zoom": 4.3,
-        "equiv": 99
+        "label": "4.3×",
+        "zoom": 4.3478260869565215,
+        "equiv": 100
       }
     ]
   },
@@ -4920,6 +4937,29 @@
       {
         "zoom": 1,
         "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "X200 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.6956521739130435,
+    "lenses": [
+      {
+        "label": "0.6×",
+        "zoom": 0.6521739130434783,
+        "equiv": 15
+      },
+      {
+        "label": "1×",
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "label": "3.7×",
+        "zoom": 3.6956521739130435,
+        "equiv": 85
       }
     ]
   }

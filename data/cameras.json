@@ -1138,5 +1138,135 @@
     "sensorH": 4.01,
     "proj": "pinhole",
     "fov": 30
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S1R II",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.8,
+    "sensorH": 23.9,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S1 II",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.8,
+    "sensorH": 23.9,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S5 II",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.6,
+    "sensorH": 23.8,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S5 II X",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.6,
+    "sensorH": 23.8,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S9",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.6,
+    "sensorH": 23.8,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S1H",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.6,
+    "sensorH": 23.8,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S1R",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.8,
+    "sensorH": 23.9,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix S1",
+    "cat": "相机",
+    "mount": "L-Mount",
+    "sensorW": 35.6,
+    "sensorH": 23.8,
+    "format": "全画幅",
+    "factor": 1
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix GH7",
+    "cat": "相机",
+    "mount": "M4/3",
+    "sensorW": 17.3,
+    "sensorH": 13.0,
+    "format": "M4/3",
+    "factor": 2
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix G9 II",
+    "cat": "相机",
+    "mount": "M4/3",
+    "sensorW": 17.3,
+    "sensorH": 13.0,
+    "format": "M4/3",
+    "factor": 2
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix GH6",
+    "cat": "相机",
+    "mount": "M4/3",
+    "sensorW": 17.3,
+    "sensorH": 13.0,
+    "format": "M4/3",
+    "factor": 2
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix G100",
+    "cat": "相机",
+    "mount": "M4/3",
+    "sensorW": 17.3,
+    "sensorH": 13.0,
+    "format": "M4/3",
+    "factor": 2
+  },
+  {
+    "brand": "松下",
+    "model": "Lumix G95",
+    "cat": "相机",
+    "mount": "M4/3",
+    "sensorW": 17.3,
+    "sensorH": 13.0,
+    "format": "M4/3",
+    "factor": 2
   }
 ]
