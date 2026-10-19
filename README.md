@@ -30,4 +30,5 @@ py -m http.server 8000
 - `libs/`：three.js r137 及加载器
 - `models/`：CZ-8A、CZ-12 外部 OBJ（全质量，未降面）；`cz8a.obj.gz` 是 2.45MB 无损压缩包，浏览器解压后还是原模型
 - `sw.js`：Service Worker，只缓存模型；第一次下载成功后，第二次打开直接读缓存
+- 顶部加载条：显示已下载/总大小、实时速度、预计剩余时间；缓存命中显示“已缓存”
 - `.nojekyll`：GitHub Pages 用
