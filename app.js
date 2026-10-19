@@ -154,9 +154,16 @@ const compMat = new THREE.ShaderMaterial({
       vec3 b = texture2D(u_idtex, vUv - vec2(u_texel.x, 0.0)).rgb;
       vec3 d = texture2D(u_idtex, vUv + vec2(0.0, u_texel.y)).rgb;
       vec3 e = texture2D(u_idtex, vUv - vec2(0.0, u_texel.y)).rgb;
+      // 只勾轮廓，不勾部件内部接缝；否则高模会被描成一团黑白噪点
       float edge = 0.0;
-      if (distance(idc, a) > 0.008 || distance(idc, b) > 0.008 ||
-          distance(idc, d) > 0.008 || distance(idc, e) > 0.008) edge = 1.0;
+      float idOn = step(0.02, length(idc));
+      if (idOn > 0.5) {
+        float aOn = step(0.02, length(a));
+        float bOn = step(0.02, length(b));
+        float dOn = step(0.02, length(d));
+        float eOn = step(0.02, length(e));
+        if (aOn < 0.5 || bOn < 0.5 || dOn < 0.5 || eOn < 0.5) edge = 1.0;
+      }
       col = mix(col, u_outline, edge * 0.9);
 
       float onB = 0.0;
@@ -204,8 +211,32 @@ function clearRocket() {
   currentHeight = 0;
   idMeshes = [];
 }
+function showLoadToast(text, pct, isError) {
+  const el = document.getElementById("loadToast");
+  if (!el) return;
+  const title = document.getElementById("loadToastTitle");
+  const fill = document.getElementById("loadToastFill");
+  el.classList.add("show");
+  el.setAttribute("aria-hidden", "false");
+  el.classList.toggle("error", !!isError);
+  if (title && text) title.textContent = text;
+  if (pct === null || pct === undefined || !isFinite(pct)) {
+    el.classList.add("indeterminate");
+    if (fill) fill.style.width = "35%";
+  } else {
+    el.classList.remove("indeterminate");
+    if (fill) fill.style.width = Math.max(0, Math.min(100, pct)) + "%";
+  }
+}
+function hideLoadToast() {
+  const el = document.getElementById("loadToast");
+  if (!el) return;
+  el.classList.remove("show");
+  el.setAttribute("aria-hidden", "true");
+}
 function loadModel(entry) {
   $("#status").textContent = "正在加载模型：" + entry.id + " …";
+  showLoadToast("正在加载模型：" + entry.id + " …", null);
   clearRocket();
   const objLoader = new THREE.OBJLoader();
   objLoader.setPath(entry.dir);
@@ -219,14 +250,23 @@ function loadModel(entry) {
     currentHeight = box.max.y - box.min.y;
     setupParts(obj);
     $("#status").textContent = "已加载：" + entry.id + "（高 " + currentHeight.toFixed(1) + " m）";
+    showLoadToast("模型已加载：" + entry.id + "（高 " + currentHeight.toFixed(1) + " m）", 100);
+    setTimeout(hideLoadToast, 700);
     render();
-  }, undefined, (err) => { $("#status").textContent = "模型加载失败：" + err; });
+  }, (xhr) => {
+    let pct = null;
+    if (xhr && xhr.total) pct = Math.round((xhr.loaded / xhr.total) * 100);
+    showLoadToast("正在加载模型：" + entry.id + " …" + (pct === null ? "" : " " + pct + "%"), pct);
+  }, (err) => {
+    $("#status").textContent = "模型加载失败：" + err;
+    showLoadToast("模型加载失败：" + entry.id + "，请刷新重试", 0, true);
+  });
 }
 function loadRocket(id) {
   const e = ROCKET_MODELS.find((x) => x.id === id) || ROCKET_MODELS[0];
   currentRocket = e;
   if (e.dir) { loadModel(e); }
-  else { clearRocket(); render(); $("#status").textContent = e.id + " 模型待补（暂无模型文件）"; }
+  else { clearRocket(); hideLoadToast(); render(); $("#status").textContent = e.id + " 模型待补（暂无模型文件）"; }
 }
 
 // ---------------- 数据 ----------------

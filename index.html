@@ -86,6 +86,22 @@
   #tip { display: none; position: fixed; z-index: 4000; max-width: 260px; padding: 8px 10px;
          background: #333; color: #fff; font-size: 12px; line-height: 1.5; border-radius: 6px;
          box-shadow: 0 2px 10px rgba(0,0,0,.3); pointer-events: none; white-space: pre-wrap; }
+  /* 模型加载提示：顶部居中，别让人对着白屏等 */
+  #loadToast { position: fixed; top: 18px; left: 50%; transform: translate(-50%, -8px); z-index: 5000;
+               width: min(420px, 86vw); padding: 12px 16px; border-radius: 10px;
+               background: rgba(24, 28, 34, .94); color: #fff; font-size: 13px; line-height: 1.45;
+               box-shadow: 0 10px 30px rgba(0,0,0,.28); opacity: 0; pointer-events: none;
+               transition: opacity .18s ease, transform .18s ease; }
+  #loadToast.show { opacity: 1; transform: translate(-50%, 0); }
+  #loadToastTitle { font-weight: 600; }
+  #loadToastTrack { height: 4px; margin-top: 9px; background: rgba(255,255,255,.18);
+                    border-radius: 2px; overflow: hidden; }
+  #loadToastFill { height: 100%; width: 0; background: #3fa97e; border-radius: 2px;
+                   transition: width .16s ease; }
+  #loadToast.indeterminate #loadToastFill { width: 35%; animation: loadToastSlide 1.1s ease-in-out infinite; }
+  #loadToast.error #loadToastFill { background: #e05a4f; }
+  #loadToast.error #loadToastTitle { color: #ffd7d2; }
+  @keyframes loadToastSlide { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
   /* 搭配提示 */
   #warn { display: none; margin: 10px 0 0; padding: 8px 10px; background: #fff6e5; border: 1px solid #e6c98a;
           border-radius: 6px; color: #7a5b12; font-size: 12px; line-height: 1.6; }
@@ -455,6 +471,12 @@
 
 <!-- 悬浮气泡 -->
 <div id="tip"></div>
+
+<!-- 模型加载提示 -->
+<div id="loadToast" role="status" aria-live="polite" aria-hidden="true">
+  <div id="loadToastTitle">正在加载模型…</div>
+  <div id="loadToastTrack"><div id="loadToastFill"></div></div>
+</div>
 
 <!-- 地图选点弹层 -->
 <div id="mapModal">
