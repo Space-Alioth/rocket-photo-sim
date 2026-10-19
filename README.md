@@ -28,5 +28,6 @@ py -m http.server 8000
 - `index.html` / `app.js`：页面与逻辑
 - `data/`：机身、镜头、手机、工位、说明文案
 - `libs/`：three.js r137 及加载器
-- `models/`：CZ-8A、CZ-12 外部 OBJ（全质量，未降面）
+- `models/`：CZ-8A、CZ-12 外部 OBJ（全质量，未降面）；`cz8a.obj.gz` 是 2.45MB 无损压缩包，浏览器解压后还是原模型
+- `sw.js`：Service Worker，只缓存模型；第一次下载成功后，第二次打开直接读缓存
 - `.nojekyll`：GitHub Pages 用

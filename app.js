@@ -238,13 +238,74 @@ function finishBoot() {
   showLoadToast("加载完成", 100);
   setTimeout(hideLoadToast, 450);
 }
-function loadModel(entry) {
+function modelProgress(entry, pct) {
+  const overall = (pct === null || pct === undefined || !isFinite(pct))
+    ? 40 : 40 + Math.round(55 * pct / 100);
+  showLoadToast("正在加载火箭模型：" + entry.id + " … " + overall + "%", overall);
+}
+async function fetchWithProgress(url, onProgress) {
+  const res = await fetch(url, { cache: "force-cache" });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  const total = Number(res.headers.get("content-length")) || 0;
+  if (!res.body) {
+    const buf = new Uint8Array(await res.arrayBuffer());
+    onProgress(100);
+    return { buf, res };
+  }
+  const reader = res.body.getReader();
+  const chunks = [];
+  let loaded = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    loaded += value.length;
+    onProgress(total ? Math.min(99, loaded / total * 100) : null);
+  }
+  const buf = new Uint8Array(loaded);
+  let off = 0;
+  for (const c of chunks) { buf.set(c, off); off += c.length; }
+  return { buf, res };
+}
+async function fetchModelText(entry, onProgress) {
+  const gzUrl = entry.dir + entry.obj + ".gz";
+  try {
+    const { buf, res } = await fetchWithProgress(gzUrl, onProgress);
+    const enc = (res.headers.get("content-encoding") || "").toLowerCase();
+    if (enc.includes("gzip")) {
+      // 服务器已经按 Content-Encoding 解压，fetch 拿到的是原 OBJ 文本
+      onProgress(100);
+      return new TextDecoder().decode(buf);
+    }
+    if (typeof DecompressionStream === "undefined") {
+      throw new Error("DecompressionStream unsupported");
+    }
+    const text = await new Response(
+      new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))
+    ).text();
+    onProgress(100);
+    return text;
+  } catch (e) {
+    console.warn("压缩模型加载失败，回退原 OBJ", e);
+    const { buf } = await fetchWithProgress(entry.dir + entry.obj, onProgress);
+    onProgress(100);
+    return new TextDecoder().decode(buf);
+  }
+}
+let modelLoadSeq = 0;
+async function loadModel(entry) {
+  const seq = ++modelLoadSeq;
   $("#status").textContent = "正在加载模型：" + entry.id + " …";
   showLoadToast("正在加载火箭模型：" + entry.id + " …", 40);
   clearRocket();
-  const objLoader = new THREE.OBJLoader();
-  objLoader.setPath(entry.dir);
-  objLoader.load(entry.obj, (obj) => {
+  try {
+    const text = await fetchModelText(entry, (pct) => {
+      if (seq === modelLoadSeq) modelProgress(entry, pct);
+    });
+    if (seq !== modelLoadSeq) return;
+    showLoadToast("正在解析火箭模型…", 95);
+    const obj = new THREE.OBJLoader().parse(text);
+    if (seq !== modelLoadSeq) return;
     const box = new THREE.Box3().setFromObject(obj);
     const c = box.getCenter(new THREE.Vector3());
     const minY = box.min.y;
@@ -257,15 +318,11 @@ function loadModel(entry) {
     showLoadToast("正在初始化画面…", 97);
     render();
     setTimeout(finishBoot, 300);
-  }, (xhr) => {
-    let pct = null;
-    if (xhr && xhr.total) pct = Math.round((xhr.loaded / xhr.total) * 100);
-    const overall = pct === null ? 40 : 40 + Math.round(55 * pct / 100);
-    showLoadToast("正在加载火箭模型：" + entry.id + " … " + overall + "%", overall);
-  }, (err) => {
+  } catch (err) {
+    if (seq !== modelLoadSeq) return;
     $("#status").textContent = "模型加载失败：" + err;
     showLoadToast("模型加载失败：" + entry.id + "，请刷新重试", 0, true);
-  });
+  }
 }
 function loadRocket(id) {
   const e = ROCKET_MODELS.find((x) => x.id === id) || ROCKET_MODELS[0];
@@ -1755,6 +1812,9 @@ function bindUI() {
 }
 
 // ---------------- 启动 ----------------
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch((e) => console.warn("Service Worker 注册失败", e));
+}
 showLoadToast("正在加载页面资源…", 8);
 updateOffsetLabel();
 loadData().then(() => {
