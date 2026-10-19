@@ -454,11 +454,23 @@ function getOther() {
 function sensorSpec() {
   if (mode === "camera") {
     const b = getBody();
-    return { w: b.sensorW, h: b.sensorH, fov: b.fov, format: b.format, factor: b.factor || 1, name: b.brand + " " + b.model };
+    return { w: b.sensorW, h: b.sensorH, fov: b.fov, fovType: b.fovType || "vertical", format: b.format, factor: b.factor || 1, name: b.brand + " " + b.model };
   }
   if (mode === "phone") return { w: 36, h: 24, fov: null, name: getPhone().model };
   const d = getOther();
-  return { w: d.sensorW, h: d.sensorH, fov: d.fov, name: d.brand + " " + d.model };
+  return { w: d.sensorW, h: d.sensorH, fov: d.fov, fovType: d.fovType || "vertical", name: d.brand + " " + d.model };
+}
+function verticalFov(S) {
+  if (!S || !S.fov) return null;
+  const type = S.fovType || "vertical";
+  if (type === "horizontal") {
+    return 2 * Math.atan((S.h / S.w) * Math.tan(S.fov * D2R / 2)) / D2R;
+  }
+  if (type === "diagonal") {
+    const d = Math.hypot(S.w, S.h);
+    return 2 * Math.atan((S.h / d) * Math.tan(S.fov * D2R / 2)) / D2R;
+  }
+  return S.fov;
 }
 function getZoom() {
   const v = parseFloat($("zoomNum").value);
@@ -573,7 +585,8 @@ function updateCamera() {
 
   // 画布竖向 FOV：框高 1 单位 = 片幅高；画布高 ch 单位 → 按比例放大（含倾斜外接框/边距）
   let fovCanvas;
-  if (S.fov) fovCanvas = 2 * Math.atan(g.ch * Math.tan(S.fov * D2R / 2)) / D2R;
+  const vf = verticalFov(S);
+  if (vf) fovCanvas = 2 * Math.atan(g.ch * Math.tan(vf * D2R / 2)) / D2R;
   else fovCanvas = 2 * Math.atan((g.ch * g.effH) / (2 * focalSpec())) / D2R;
 
   camera.fov = fovCanvas;
@@ -673,7 +686,8 @@ function updateInfo() {
   } else {
     rows.push(["设备", S.name]);
     rows.push(["传感器", S.w.toFixed(2) + "×" + S.h.toFixed(2) + " mm"]);
-    if (S.fov) rows.push(["视场角", S.fov + "°（竖向）"]);
+    const vf = verticalFov(S);
+    if (vf) rows.push(["视场角", (Math.round(vf * 10) / 10) + "°（竖向）"]);
   }
   rows.push(["距离", (parseFloat($("distance").value) || 0) + " m"]);
   rows.push(["方位角", (parseFloat($("azimuth").value) || 0) + "°"]);
@@ -816,7 +830,8 @@ function exportInfoLines() {
     lines.push("等效焦距：" + focalSpec().toFixed(1) + " mm");
   } else {
     lines.push("设备：" + S.name);
-    lines.push("视场角：" + (S.fov || "") + "°");
+    const vf = verticalFov(S);
+    lines.push("视场角：" + (vf ? (Math.round(vf * 10) / 10) : "") + "°");
   }
   lines.push("距离：" + (parseFloat($("distance").value) || 0) + " m　方位角："
     + (parseFloat($("azimuth").value) || 0) + "°　相对高度：" + (parseFloat($("height").value) || 0) + " m");

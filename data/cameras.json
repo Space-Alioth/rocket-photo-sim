@@ -827,7 +827,9 @@
     "sensorW": 13.2,
     "sensorH": 7.4,
     "proj": "pinhole",
-    "fov": 80
+    "fov": 61.9,
+    "fovType": "vertical",
+    "equiv": 20
   },
   {
     "brand": "DJI",
@@ -1035,9 +1037,10 @@
     "cat": "其他",
     "mount": "固定",
     "sensorW": 6.4,
-    "sensorH": 3.6,
+    "sensorH": 4.8,
     "proj": "fisheye",
-    "fov": 120
+    "fov": 170,
+    "fovType": "diagonal"
   },
   {
     "brand": "Insta360",
