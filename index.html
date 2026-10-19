@@ -146,7 +146,8 @@
   #mapWrap { flex: 1; min-height: 0; position: relative; background: #eef1f4; }
   #bmap { position: absolute; inset: 0; }
   .mapsearch { position: relative; display: flex; gap: 8px; padding: 10px 12px; background: #f7f8fa; border-bottom: 1px solid #e2e2e2; }
-  .mapsearch input { flex: 1; padding: 8px 10px; font-size: 13px; border: 1px solid #c8ccd2; border-radius: 6px; outline: none; }
+  .mapsearch input { flex: 1; padding: 8px 10px 8px 32px; font-size: 13px; border: 1px solid #c8ccd2; border-radius: 6px; outline: none; }
+  .map-search-ico { left: 21px; width: 15px; height: 15px; }
   .mapsearch input:focus { border-color: #2d7ff9; box-shadow: 0 0 0 2px rgba(45,127,249,.18); }
   .mapsearch > button { flex: none; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 6px; border: 1px solid #2b6fd0; background: #2d7ff9; color: #fff; }
   .mapsearch > button:hover { filter: brightness(1.06); }
@@ -199,8 +200,10 @@
   .mapbtns button.sec { background: #fff; color: #2e8a66; }
   /* 型号搜索 */
   .searchwrap { position: relative; margin-top: 6px; }
-  .modelsearch { width: 100%; padding: 6px 9px; font-size: 12px; color: #222;
+  .modelsearch { width: 100%; padding: 6px 9px 6px 30px; font-size: 12px; color: #222;
                  border: 1px solid #c8ccd2; border-radius: 6px; background: #fff; outline: none; }
+  .search-ico { position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+                width: 14px; height: 14px; color: #7a828c; pointer-events: none; }
   .modelsearch:focus { border-color: #3fa97e; box-shadow: 0 0 0 2px rgba(63,169,126,.15); }
   .searchres { display: none; position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 60;
                max-height: 220px; overflow-y: auto; background: #fff; border: 1px solid #c8ccd2;
@@ -366,6 +369,7 @@
         <div><label>型号</label><select id="camModel"></select></div>
       </div>
       <div class="searchwrap">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
         <input id="camSearch" class="modelsearch" type="text" placeholder="搜索机身型号（如 Z8、R5）" autocomplete="off" />
         <div id="camSearchRes" class="searchres"></div>
       </div>
@@ -385,6 +389,7 @@
         </div>
       </div>
       <div class="searchwrap">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
         <input id="lensSearch" class="modelsearch" type="text" placeholder="搜索镜头型号/焦距（如 100-500、50mm）" autocomplete="off" />
         <div id="lensSearchRes" class="searchres"></div>
       </div>
@@ -403,6 +408,7 @@
         <div><label>型号</label><select id="phoneModel"></select></div>
       </div>
       <div class="searchwrap">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
         <input id="phoneSearch" class="modelsearch" type="text" placeholder="搜索手机型号（如 S24 Ultra、X100 Pro）" autocomplete="off" />
         <div id="phoneSearchRes" class="searchres"></div>
       </div>
@@ -419,6 +425,7 @@
         <div><label>型号</label><select id="otherModel"></select></div>
       </div>
       <div class="searchwrap">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
         <input id="otherSearch" class="modelsearch" type="text" placeholder="搜索设备型号（如 HERO13、X4）" autocomplete="off" />
         <div id="otherSearchRes" class="searchres"></div>
       </div>
@@ -486,7 +493,8 @@
 <div id="mapModal">
   <div class="mapbox">
     <div class="mapsearch">
-      <input id="mapSearchInput" type="text" placeholder="输入地名 / 地址 / 商家名（如：星芒一号火箭观礼）" autocomplete="off" />
+      <svg class="search-ico map-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+      <input id="mapSearchInput" type="text" placeholder="输入地名/地址/观礼位" autocomplete="off" />
       <button id="mapSearchBtn">搜索</button>
       <div id="mapSuggestions" class="mapsug"></div>
     </div>

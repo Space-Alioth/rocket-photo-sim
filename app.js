@@ -25,7 +25,7 @@ const SHADOW_OFFSET = [6, 7];
 const LIGHT_DIR = [-0.45, 0.70, 0.55];
 
 const D2R = Math.PI / 180;
-const APP_VERSION = "v0.9.0 内测1";
+const APP_VERSION = "v0.10.0 内测";
 const $ = (id) => document.getElementById(String(id).replace(/^#/, ""));
 
 // ---------------- three.js 基础 ----------------
@@ -702,6 +702,18 @@ function makeRTs(w, h) {
   compMat.uniforms.u_texel.value.set(1 / w, 1 / h);
   compMat.uniforms.u_shadowoff.value.set(SHADOW_OFFSET[0] / w, -SHADOW_OFFSET[1] / h);
 }
+function setRenderSize(w, h) {
+  renderer.setSize(w, h, false);
+  const dbs = new THREE.Vector2();
+  renderer.getDrawingBufferSize(dbs);
+  makeRTs(Math.max(1, Math.floor(dbs.x)), Math.max(1, Math.floor(dbs.y)));
+  // 取景框几何 → 合成着色器
+  const g = frameGeom();
+  compMat.uniforms.u_canvas.value.set(g.cw, g.ch);
+  compMat.uniforms.u_fhalf.value.set(g.frameW / 2, g.frameH / 2);
+  compMat.uniforms.u_frameAngle.value = (g.cs.frameAngle || 0) * D2R;
+  compMat.uniforms.u_border.value = 2.0 * Math.max(g.cw / rtW, g.ch / rtH);
+}
 function resize() {
   const wrap = $("#viewwrap");
   const aw = wrap.clientWidth, ah = wrap.clientHeight;
@@ -709,18 +721,10 @@ function resize() {
   const aspect = g.aspect;
   let w = aw, h = aw / aspect;
   if (h > ah) { h = ah; w = ah * aspect; }
-  renderer.setSize(w, h, false);
   canvas.style.width = w + "px";
   canvas.style.height = h + "px";
   canvas.style.margin = ((ah - h) / 2) + "px " + ((aw - w) / 2) + "px";
-  const dbs = new THREE.Vector2();
-  renderer.getDrawingBufferSize(dbs);
-  makeRTs(Math.max(1, Math.floor(dbs.x)), Math.max(1, Math.floor(dbs.y)));
-  // 取景框几何 → 合成着色器
-  compMat.uniforms.u_canvas.value.set(g.cw, g.ch);
-  compMat.uniforms.u_fhalf.value.set(g.frameW / 2, g.frameH / 2);
-  compMat.uniforms.u_frameAngle.value = (g.cs.frameAngle || 0) * D2R;
-  compMat.uniforms.u_border.value = 2.0 * Math.max(g.cw / rtW, g.ch / rtH);
+  setRenderSize(w, h);
 }
 
 // ---------------- 渲染流水线 ----------------
@@ -880,16 +884,35 @@ function drawTopRightCredit(ctx, W, H) {
   ctx.restore();
 }
 function buildExportCanvas() {
-  render();
-  const W = canvas.width, H = canvas.height;
-  const cv = document.createElement("canvas");
-  cv.width = W; cv.height = H;
-  const ctx = cv.getContext("2d");
-  ctx.drawImage(canvas, 0, 0);
-  drawParamOverlay(ctx, W, H);
-  drawDisclaimerOverlay(ctx, W, H);
-  drawTopRightCredit(ctx, W, H);
-  return cv;
+  // 导出固定长边 3000px，不再跟手机屏幕分辨率走
+  const g = frameGeom();
+  const aspect = g.aspect;
+  const longEdge = 3000;
+  let W, H;
+  if (aspect >= 1) { W = longEdge; H = Math.round(W / aspect); }
+  else { H = longEdge; W = Math.round(H * aspect); }
+  const maxTex = (renderer.capabilities && renderer.capabilities.maxTextureSize) || 4096;
+  const cap = Math.min(1, maxTex / Math.max(W, H));
+  W = Math.max(1, Math.round(W * cap));
+  H = Math.max(1, Math.round(H * cap));
+  const oldPR = renderer.getPixelRatio();
+  try {
+    renderer.setPixelRatio(1);
+    setRenderSize(W, H);
+    render();
+    const cv = document.createElement("canvas");
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext("2d");
+    ctx.drawImage(canvas, 0, 0, W, H);
+    drawParamOverlay(ctx, W, H);
+    drawDisclaimerOverlay(ctx, W, H);
+    drawTopRightCredit(ctx, W, H);
+    return cv;
+  } finally {
+    renderer.setPixelRatio(oldPR);
+    resize();
+    render();
+  }
 }
 function exportPng() {
   const cv = buildExportCanvas();
@@ -1644,6 +1667,53 @@ function selectDefaultPhone() {
   onSelectChange();
 }
 
+function isMobileDevice() {
+  if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return true;
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+}
+function normalizePhoneName(s) {
+  return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+function selectPhoneByHint(hint) {
+  const q = normalizePhoneName(hint);
+  if (!q) return false;
+  let best = null, bestLen = 0;
+  for (const p of DATA.phones) {
+    const m = normalizePhoneName(p.model);
+    if (!m) continue;
+    if (m === q) { best = p; break; }
+    if (m.length >= 5 && q.length >= 5 && m.length > bestLen &&
+        (q.includes(m) || m.includes(q))) {
+      best = p;
+      bestLen = m.length;
+    }
+  }
+  if (!best) return false;
+  const brandSel = $("#phoneBrand"), modelSel = $("#phoneModel");
+  if (![...brandSel.options].some((o) => o.value === best.brand)) return false;
+  brandSel.value = best.brand;
+  brandSel.dispatchEvent(new Event("change"));
+  const list = DATA.phones.filter((x) => x.brand === best.brand);
+  const idx = list.findIndex((x) => x.model === best.model);
+  if (idx < 0) return false;
+  modelSel.selectedIndex = idx;
+  onSelectChange();
+  return true;
+}
+async function detectMobilePhone() {
+  if (!isMobileDevice()) return;
+  let hint = "";
+  const m = (navigator.userAgent || "").match(/Android[^;]*;\s*([^;)]+?)(?:\s+Build|\)|;)/i);
+  if (m) hint = m[1].trim();
+  if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+    try {
+      const d = await navigator.userAgentData.getHighEntropyValues(["model"]);
+      if (d && d.model) hint = d.model;
+    } catch (e) {}
+  }
+  if (hint) selectPhoneByHint(hint);
+}
+
 function closeAllSearch() {
   document.querySelectorAll(".searchres.open").forEach((el) => el.classList.remove("open"));
 }
@@ -1872,7 +1942,9 @@ loadData().then(() => {
   bindTips();
   bindUI();
   setupSearch();
-  setMode("camera");
+  const mobile = isMobileDevice();
+  setMode(mobile ? "phone" : "camera");
+  if (mobile) detectMobilePhone();
   resize();
   const params = new URLSearchParams(location.search);
   if (params.get("help") === "1") openHelp();
