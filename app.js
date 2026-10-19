@@ -211,15 +211,17 @@ function clearRocket() {
   currentHeight = 0;
   idMeshes = [];
 }
-function showLoadToast(text, pct, isError) {
+function showLoadToast(text, pct, isError, detail) {
   const el = document.getElementById("loadToast");
   if (!el) return;
   const title = document.getElementById("loadToastTitle");
+  const detailEl = document.getElementById("loadToastDetail");
   const fill = document.getElementById("loadToastFill");
   el.classList.add("show");
   el.setAttribute("aria-hidden", "false");
   el.classList.toggle("error", !!isError);
   if (title && text) title.textContent = text;
+  if (detailEl) detailEl.textContent = detail || "";
   if (pct === null || pct === undefined || !isFinite(pct)) {
     el.classList.add("indeterminate");
     if (fill) fill.style.width = "35%";
@@ -227,6 +229,39 @@ function showLoadToast(text, pct, isError) {
     el.classList.remove("indeterminate");
     if (fill) fill.style.width = Math.max(0, Math.min(100, pct)) + "%";
   }
+}
+function fmtBytes(n) {
+  if (!isFinite(n) || n <= 0) return "0 B";
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let i = 0, v = n;
+  while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+  const digits = v >= 100 ? 0 : v >= 10 ? 1 : 2;
+  return v.toFixed(digits) + " " + units[i];
+}
+function fmtSpeed(bps) {
+  if (!isFinite(bps) || bps <= 0) return "0 KB/s";
+  return fmtBytes(bps) + "/s";
+}
+function fmtEta(sec) {
+  if (!isFinite(sec) || sec < 0) return "—";
+  if (sec < 1) return "<1 秒";
+  if (sec < 60) return Math.ceil(sec) + " 秒";
+  const m = Math.floor(sec / 60), s = Math.round(sec % 60);
+  if (m < 60) return m + " 分 " + (s < 10 ? "0" : "") + s + " 秒";
+  const h = Math.floor(m / 60), mm = m % 60;
+  return h + " 小时 " + mm + " 分";
+}
+function downloadDetail(loaded, total, speed) {
+  const size = total > 0
+    ? "已下载 " + fmtBytes(loaded) + " / " + fmtBytes(total)
+    : "已下载 " + fmtBytes(loaded);
+  if (total > 0 && loaded >= total) return size + " · 已缓存";
+  const sp = speed > 0 ? fmtSpeed(speed) : "计算中…";
+  let s = size + " · " + sp;
+  if (total > 0 && speed > 0 && loaded < total) {
+    s += " · 预计 " + fmtEta((total - loaded) / speed);
+  }
+  return s;
 }
 function hideLoadToast() {
   const el = document.getElementById("loadToast");
@@ -238,19 +273,34 @@ function finishBoot() {
   showLoadToast("加载完成", 100);
   setTimeout(hideLoadToast, 450);
 }
-function modelProgress(entry, pct) {
+function modelProgress(entry, pct, loaded, total, speed) {
   const overall = (pct === null || pct === undefined || !isFinite(pct))
     ? 40 : 40 + Math.round(55 * pct / 100);
-  showLoadToast("正在加载火箭模型：" + entry.id + " … " + overall + "%", overall);
+  showLoadToast("正在加载火箭模型：" + entry.id + " … " + overall + "%",
+    overall, false, downloadDetail(loaded || 0, total || 0, speed || 0));
 }
 async function fetchWithProgress(url, onProgress) {
   const res = await fetch(url, { cache: "force-cache" });
   if (!res.ok) throw new Error("HTTP " + res.status);
   const total = Number(res.headers.get("content-length")) || 0;
+  let lastTime = performance.now();
+  let lastBytes = 0;
+  let speed = 0;
+  const report = (pct, loaded) => {
+    const now = performance.now();
+    if (now - lastTime >= 300) {
+      const dt = (now - lastTime) / 1000;
+      const inst = (loaded - lastBytes) / dt;
+      if (inst >= 0) speed = speed > 0 ? speed * 0.65 + inst * 0.35 : inst;
+      lastTime = now;
+      lastBytes = loaded;
+    }
+    onProgress(pct, loaded, total, speed);
+  };
   if (!res.body) {
     const buf = new Uint8Array(await res.arrayBuffer());
-    onProgress(100);
-    return { buf, res };
+    report(100, buf.length);
+    return { buf, res, total, loaded: buf.length };
   }
   const reader = res.body.getReader();
   const chunks = [];
@@ -260,21 +310,21 @@ async function fetchWithProgress(url, onProgress) {
     if (done) break;
     chunks.push(value);
     loaded += value.length;
-    onProgress(total ? Math.min(99, loaded / total * 100) : null);
+    report(total ? Math.min(99, loaded / total * 100) : null, loaded);
   }
   const buf = new Uint8Array(loaded);
   let off = 0;
   for (const c of chunks) { buf.set(c, off); off += c.length; }
-  return { buf, res };
+  return { buf, res, total, loaded };
 }
 async function fetchModelText(entry, onProgress) {
   const gzUrl = entry.dir + entry.obj + ".gz";
   try {
-    const { buf, res } = await fetchWithProgress(gzUrl, onProgress);
+    const { buf, res, total, loaded } = await fetchWithProgress(gzUrl, onProgress);
     const enc = (res.headers.get("content-encoding") || "").toLowerCase();
     if (enc.includes("gzip")) {
       // 服务器已经按 Content-Encoding 解压，fetch 拿到的是原 OBJ 文本
-      onProgress(100);
+      onProgress(100, loaded, total, 0);
       return new TextDecoder().decode(buf);
     }
     if (typeof DecompressionStream === "undefined") {
@@ -283,12 +333,12 @@ async function fetchModelText(entry, onProgress) {
     const text = await new Response(
       new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))
     ).text();
-    onProgress(100);
+    onProgress(100, loaded, total, 0);
     return text;
   } catch (e) {
     console.warn("压缩模型加载失败，回退原 OBJ", e);
-    const { buf } = await fetchWithProgress(entry.dir + entry.obj, onProgress);
-    onProgress(100);
+    const { buf, total, loaded } = await fetchWithProgress(entry.dir + entry.obj, onProgress);
+    onProgress(100, loaded, total, 0);
     return new TextDecoder().decode(buf);
   }
 }
@@ -299,8 +349,8 @@ async function loadModel(entry) {
   showLoadToast("正在加载火箭模型：" + entry.id + " …", 40);
   clearRocket();
   try {
-    const text = await fetchModelText(entry, (pct) => {
-      if (seq === modelLoadSeq) modelProgress(entry, pct);
+    const text = await fetchModelText(entry, (pct, loaded, total, speed) => {
+      if (seq === modelLoadSeq) modelProgress(entry, pct, loaded, total, speed);
     });
     if (seq !== modelLoadSeq) return;
     showLoadToast("正在解析火箭模型…", 95);

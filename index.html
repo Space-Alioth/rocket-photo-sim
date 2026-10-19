@@ -94,6 +94,9 @@
                transition: opacity .18s ease, transform .18s ease; }
   #loadToast.show { opacity: 1; transform: translate(-50%, 0); }
   #loadToastTitle { font-weight: 600; }
+  #loadToastDetail { margin-top: 3px; color: rgba(255,255,255,.72); font-size: 12px;
+                     font-variant-numeric: tabular-nums; }
+  #loadToastDetail:empty { display: none; }
   #loadToastTrack { height: 4px; margin-top: 9px; background: rgba(255,255,255,.18);
                     border-radius: 2px; overflow: hidden; }
   #loadToastFill { height: 100%; width: 0; background: #3fa97e; border-radius: 2px;
@@ -297,6 +300,7 @@
 <!-- 全站加载提示：从页面解析开始就显示 -->
 <div id="loadToast" class="show" role="status" aria-live="polite" aria-hidden="false">
   <div id="loadToastTitle">正在加载网站…</div>
+  <div id="loadToastDetail"></div>
   <div id="loadToastTrack"><div id="loadToastFill"></div></div>
 </div>
 
