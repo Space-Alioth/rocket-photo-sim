@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>火箭拍摄模拟器（网页版）</title>
+<style>
+  /* 整体布局：左参数、右画布；窄屏自动上下堆叠 */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; font-family: system-ui, "Microsoft YaHei", sans-serif; }
+  #app { display: flex; height: 100%; }
+  #panel {
+    width: 440px; flex: none; overflow-y: auto; padding: 6px 16px 16px;
+    background: #f5f6f8; border-right: 1px solid #ddd; font-size: 13px;
+  }
+  #panel h3 { margin: 10px 0 6px; font-size: 13px; color: #444; font-weight: 600; }
+  #panel h3.mid { text-align: center; font-size: 14px; }
+  #panel label { display: block; margin: 7px 0 3px; color: #555; font-size: 12.5px; }
+  /* 输入/下拉：统一美化 */
+  #panel select, #panel input {
+    width: 100%; padding: 7px 9px; font-size: 13px; color: #222;
+    border: 1px solid #c8ccd2; border-radius: 6px; background: #fff; outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  #panel select:focus, #panel input:focus {
+    border-color: #3fa97e; box-shadow: 0 0 0 2px rgba(63,169,126,.18);
+  }
+  /* 滑块：去掉内边距/边框，让拇指能滑到两端 */
+  #panel input[type="range"] { padding: 0; border: none; background: transparent; height: 22px; accent-color: #2d7ff9; }
+  /* 焦距行：左文字 + 右实时数值 */
+  .focalrow { display: flex; align-items: baseline; }
+  #focalReadout { margin-left: auto; color: #24568f; font-weight: 700; font-size: 13px; }
+  /* 两列 / 三列 */
+  .pair { display: flex; gap: 8px; }
+  .pair > div { flex: 1; min-width: 0; }
+  .triple { display: flex; gap: 8px; }
+  .triple > div { flex: 1; min-width: 0; }
+  /* 镜头：品牌 / 型号 / 增倍镜 同一行 */
+  .lensrow { display: flex; gap: 8px; align-items: flex-end; }
+  .lensrow > div { min-width: 0; }
+  .lensrow .lr-brand { flex: 0 0 88px; }
+  .lensrow .lr-model { flex: 1 1 auto; }
+  .lensrow .lr-tc { flex: 0 0 100px; }
+  .lensrow select { width: 100%; }
+  /* 手动焦距时没有“型号”，让品牌列占满剩余空间，避免中间空一块 */
+  .lensrow.manual .lr-brand { flex: 1 1 auto; }
+  .lensrow.manual .lr-model { display: none; }
+  .row2 { display: flex; gap: 10px; align-items: flex-end; }
+  .row2 > div { flex: 1; min-width: 0; }
+  /* 构图角度：滑块 + 输入 */
+  .rollrow { display: flex; gap: 8px; align-items: center; }
+  .rollrow #rollSlider { flex: 1 1 auto; }
+  .rollrow #rollDeg { width: 82px; flex: none; }
+  /* 分区大标题（醒目） */
+  .sec-title { text-align: center; font-weight: 700; font-size: 15px; color: #14161a;
+               letter-spacing: 1px; margin: 18px 0 8px; }
+  /* 大分割线（分区之间，2px 黑，居中不铺满） */
+  .bigline { width: 82%; height: 2px; background: #14161a; margin: 16px auto; border-radius: 1px; }
+  /* 选择拍摄地点：左输入 + 竖线 + 右地图按钮 */
+  .locblock { display: flex; align-items: stretch; }
+  .locinputs { flex: 1; min-width: 0; }
+  .loclabel { text-align: center; font-size: 15px; font-weight: 700; color: #333; margin: 4px 0 6px; }
+  .vsplit { flex: none; width: 1px; background: #d5d8dd; margin: 0 12px; }
+  #openMap {
+    flex: none; width: 112px; display: flex; align-items: center; justify-content: center;
+    gap: 4px; font-size: 15px; font-weight: 700; color: #fff; cursor: pointer;
+    border: 1px solid #2b6fd0; border-radius: 8px; background: linear-gradient(#3f8ff5, #2d7ff9);
+    box-shadow: 0 2px 6px rgba(45,127,249,.35); transition: filter .15s, box-shadow .15s;
+  }
+  #openMap:hover { filter: brightness(1.06); box-shadow: 0 3px 10px rgba(45,127,249,.45); }
+  #openMap .q { background: #cfe0ff; color: #2456a8; }
+  /* 模式按钮 */
+  #modebtns { display: flex; gap: 8px; }
+  .modebtn { flex: 1; padding: 9px 0; font-size: 13px; font-weight: 600; cursor: pointer;
+             border-radius: 6px; border: 1px solid #b9c0c9; background: #fff; color: #445;
+             transition: background .15s, color .15s, border-color .15s; }
+  .modebtn:hover { border-color: #9aa6b2; }
+  .modebtn.active { background: #3fa97e; border-color: #2e8a66; color: #fff; }
+  /* 单选（画框转 / 画面转） */
+  .radios { display: flex; gap: 14px; align-items: center; height: 35px; }
+  .radio { display: flex; align-items: center; gap: 5px; font-size: 13px; color: #445; margin: 0; cursor: pointer; }
+  .radio input { width: auto; margin: 0; }
+  /* 可展开注释 + 悬浮气泡 */
+  .q { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center;
+       border-radius: 50%; background: #dde; color: #556; font-size: 11px; cursor: pointer; user-select: none; }
+  #tip { display: none; position: fixed; z-index: 4000; max-width: 260px; padding: 8px 10px;
+         background: #333; color: #fff; font-size: 12px; line-height: 1.5; border-radius: 6px;
+         box-shadow: 0 2px 10px rgba(0,0,0,.3); pointer-events: none; white-space: pre-wrap; }
+  /* 搭配提示 */
+  #warn { display: none; margin: 10px 0 0; padding: 8px 10px; background: #fff6e5; border: 1px solid #e6c98a;
+          border-radius: 6px; color: #7a5b12; font-size: 12px; line-height: 1.6; }
+  #warn .wnote { margin: 6px 0; }
+  #warn .wnote:first-child { margin-top: 0; }
+  #warn .wtitle { font-weight: 700; color: #6a4d0e; }
+  #warn .wtxt { margin-top: 2px; }
+  /* 信息面板（两列） */
+  #info { margin-top: 6px; padding: 10px 12px; background: #fff; border: 1px solid #e2e2e2; border-radius: 6px;
+          color: #334; font-size: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; }
+  #info .pir { display: flex; gap: 6px; min-width: 0; }
+  #info .ik { color: #889; flex: none; }
+  #info .iv { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* 转向按钮 */
+  #turnbtns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  #turnbtns button { flex: 1 1 46%; padding: 8px 0; font-size: 13px; cursor: pointer; border-radius: 6px;
+                     border: 1px solid #b9c0c9; background: #fff; color: #445; transition: border-color .15s; }
+  #turnbtns button:hover { border-color: #9aa6b2; }
+  .wide { width: 100%; margin-top: 10px; padding: 9px 0; font-size: 13px; cursor: pointer; border-radius: 6px; border: 1px solid #3fa97e; }
+  .wide.sec { background: #fff; color: #2e8a66; font-weight: 600; }
+  #offsetLabel { margin-top: 8px; color: #445; }
+  #status { margin-top: 8px; color: #666; white-space: pre-wrap; word-break: break-all; }
+  #copyright { margin-top: 14px; padding-top: 10px; border-top: 1px solid #e2e2e2; font-size: 12px; color: #777; }
+  #copyright p { margin: 0; line-height: 1.6; }
+  /* 底部按钮 */
+  #btns { display: flex; gap: 8px; margin-top: 12px; }
+  #btns button { flex: 1; padding: 10px 0; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 6px;
+                 border: 1px solid #3fa97e; background: #3fa97e; color: #fff; transition: filter .15s; }
+  #btns button:hover { filter: brightness(1.06); }
+  #btns button.sec { background: #fff; color: #2e8a66; }
+  #viewwrap { flex: 1; position: relative; background: #dcdcdc; }
+  #view { width: 100%; height: 100%; display: block; }
+  /* 地图弹层 */
+  #mapModal { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.55); }
+  #mapModal.show { display: block; }
+  .mapbox { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+            width: min(92vw, 1080px); height: min(88vh, 760px); background: #fff; border-radius: 8px;
+            overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 6px 30px rgba(0,0,0,.4); }
+  #mapWrap { flex: 1; min-height: 0; position: relative; background: #eef1f4; }
+  #bmap { position: absolute; inset: 0; }
+  .mapsearch { position: relative; display: flex; gap: 8px; padding: 10px 12px; background: #f7f8fa; border-bottom: 1px solid #e2e2e2; }
+  .mapsearch input { flex: 1; padding: 8px 10px; font-size: 13px; border: 1px solid #c8ccd2; border-radius: 6px; outline: none; }
+  .mapsearch input:focus { border-color: #2d7ff9; box-shadow: 0 0 0 2px rgba(45,127,249,.18); }
+  .mapsearch > button { flex: none; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 6px; border: 1px solid #2b6fd0; background: #2d7ff9; color: #fff; }
+  .mapsearch > button:hover { filter: brightness(1.06); }
+  /* 百度输入提示下拉（自己渲染，避免层级问题） */
+  .mapsug { display: none; position: absolute; left: 12px; right: 12px; top: calc(100% - 2px); z-index: 80;
+            max-height: 240px; overflow-y: auto; background: #fff; border: 1px solid #c8ccd2;
+            border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  .mapsug.open { display: block; }
+  .mapsug button { display: block; width: 100%; text-align: left; padding: 7px 10px; font-size: 12.5px;
+                   color: #333; background: #fff; border: none; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+  .mapsug button:last-child { border-bottom: none; }
+  .mapsug button:hover { background: #eef8f3; }
+  .mapsug .sug-sub { display: block; margin-top: 2px; font-size: 11px; color: #888; }
+  .mapsug .nores { padding: 8px 10px; font-size: 12px; color: #888; }
+  /* 搜索范围 */
+  .mapscopes { display: flex; gap: 6px; padding: 6px 12px; background: #f7f8fa; border-bottom: 1px solid #e2e2e2; }
+  .mapscopes button { padding: 5px 12px; font-size: 12px; cursor: pointer; border-radius: 6px;
+                      border: 1px solid #b9c0c9; background: #fff; color: #445; }
+  .mapscopes button:hover { border-color: #9aa6b2; }
+  .mapscopes button.on { background: #2d7ff9; border-color: #2b6fd0; color: #fff; }
+  /* 搜索结果面板（覆盖在地图左上角，像地图客户端） */
+  #mapSearchPanel { display: none; position: absolute; left: 10px; top: 10px; width: min(360px, calc(100% - 20px));
+                    max-height: calc(100% - 72px); z-index: 30; background: #fff; border-radius: 8px;
+                    box-shadow: 0 6px 24px rgba(0,0,0,.25); overflow: hidden; }
+  #mapSearchPanel.show { display: flex; flex-direction: column; }
+  .msp-head { display: flex; align-items: center; justify-content: space-between; flex: none;
+              padding: 8px 10px; border-bottom: 1px solid #e5e7eb; font-size: 13px; font-weight: 700; color: #333; }
+  .msp-head button { width: 26px; height: 26px; line-height: 24px; text-align: center; cursor: pointer;
+                     border: 1px solid #c8ccd2; border-radius: 6px; background: #fff; color: #555; }
+  #mapSearchList { overflow-y: auto; }
+  .msp-item { display: block; width: 100%; text-align: left; padding: 8px 10px; border: none;
+              border-bottom: 1px solid #f0f2f5; background: #fff; cursor: pointer; }
+  .msp-item:hover { background: #eef8f3; }
+  .msp-name { font-size: 13px; font-weight: 600; color: #222; }
+  .msp-sub { margin-top: 3px; font-size: 11.5px; color: #777; line-height: 1.5; }
+  .msp-page { display: flex; gap: 8px; align-items: center; justify-content: space-between; flex: none;
+              padding: 6px 10px; border-top: 1px solid #eee; font-size: 12px; color: #555; }
+  .msp-page button { padding: 2px 10px; font-size: 12px; cursor: pointer; border: 1px solid #c8ccd2;
+                     border-radius: 5px; background: #fff; color: #445; }
+  .msp-page button:disabled { opacity: .4; cursor: default; }
+  .msp-page:empty { display: none; }
+  .maplayers { display: flex; gap: 6px; padding: 6px 12px; background: #f7f8fa; border-bottom: 1px solid #e2e2e2; }
+  .maplayers button { padding: 5px 14px; font-size: 12px; cursor: pointer; border-radius: 6px;
+    border: 1px solid #b9c0c9; background: #fff; color: #445; }
+  .maplayers button:hover { border-color: #9aa6b2; }
+  .maplayers button.on { background: #2d7ff9; border-color: #2b6fd0; color: #fff; }
+  #mapinfo { padding: 8px 12px; font-size: 13px; color: #334; background: #f7f8fa; border-top: 1px solid #e2e2e2; }
+  .mapbtns { display: flex; gap: 8px; padding: 8px 12px; background: #f7f8fa; }
+  .mapbtns button { flex: 1; padding: 9px 0; font-size: 13px; cursor: pointer; border-radius: 6px; border: 1px solid #3fa97e; background: #3fa97e; color: #fff; }
+  .mapbtns button.sec { background: #fff; color: #2e8a66; }
+  /* 型号搜索 */
+  .searchwrap { position: relative; margin-top: 6px; }
+  .modelsearch { width: 100%; padding: 6px 9px; font-size: 12px; color: #222;
+                 border: 1px solid #c8ccd2; border-radius: 6px; background: #fff; outline: none; }
+  .modelsearch:focus { border-color: #3fa97e; box-shadow: 0 0 0 2px rgba(63,169,126,.15); }
+  .searchres { display: none; position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 60;
+               max-height: 220px; overflow-y: auto; background: #fff; border: 1px solid #c8ccd2;
+               border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.16); }
+  .searchres.open { display: block; }
+  .searchres button { display: block; width: 100%; text-align: left; padding: 7px 9px; font-size: 12px;
+                      color: #333; background: #fff; border: none; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+  .searchres button:last-child { border-bottom: none; }
+  .searchres button:hover { background: #eef8f3; }
+  .searchres .nores { padding: 8px 9px; font-size: 12px; color: #888; }
+  /* 手机光学档位 */
+  #phoneStops { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  #phoneStops:empty { display: none; }
+  #phoneStops button { padding: 5px 10px; font-size: 12px; border: 1px solid #b9c0c9; border-radius: 14px;
+                       background: #fff; color: #445; cursor: pointer; }
+  #phoneStops button:hover { border-color: #3fa97e; color: #2e8a66; }
+  /* 顶部固定导航 */
+  #topnav { position: sticky; top: 0; z-index: 40; display: flex; gap: 4px;
+            margin: -6px -16px 8px; padding: 7px 10px; background: #f5f6f8;
+            border-bottom: 1px solid #e2e2e2; }
+  #topnav button { flex: 1; min-width: 0; padding: 7px 2px; font-size: 12px; color: #2e8a66;
+                   background: #fff; border: 1px solid #b9c0c9; border-radius: 6px;
+                   cursor: pointer; white-space: nowrap; }
+  #topnav button:hover { border-color: #3fa97e; }
+  /* 构图角度快捷按钮 */
+  .comprow { display: flex; gap: 10px; align-items: flex-end; margin-top: 8px; }
+  .orientbtns { display: flex; gap: 8px; flex: 1; min-width: 0; }
+  .orientbtns button { flex: 1; padding: 9px 0; font-size: 13px; font-weight: 600; cursor: pointer;
+                       border: 1px solid #b9c0c9; border-radius: 6px; background: #fff; color: #445; }
+  .orientbtns button:hover { border-color: #3fa97e; color: #2e8a66; }
+  .radiosblock { flex: 1; min-width: 0; }
+  .radiosblock > label { margin: 0 0 3px; }
+  .stepblock { margin-top: 10px; }
+  #helpModal, #aboutModal, #contactModal, #showcaseModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); }
+  #helpModal { z-index: 3500; }
+  #aboutModal { z-index: 3600; }
+  #contactModal { z-index: 3700; }
+  #showcaseModal { z-index: 3800; }
+  #helpModal.show, #aboutModal.show, #contactModal.show, #showcaseModal.show { display: block; }
+  .helpbox { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+             width: min(94vw, 1000px); max-height: 90vh; background: #fff; border-radius: 10px;
+             overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 36px rgba(0,0,0,.42); }
+  .helphead { flex: none; display: flex; align-items: center; gap: 12px; padding: 13px 18px;
+              border-bottom: 1px solid #e2e2e2; background: #f7f8fa; }
+  .helphead h2 { margin: 0; font-size: 16px; }
+  .helphead .hsub { font-size: 12px; color: #777; }
+  #helpClose, #aboutClose, #contactClose, #showcaseClose { margin-left: auto; width: 30px; height: 30px; line-height: 28px; text-align: center;
+               font-size: 20px; color: #556; cursor: pointer; border: 1px solid #c8ccd2;
+               border-radius: 6px; background: #fff; }
+  #helpClose:hover, #aboutClose:hover, #contactClose:hover, #showcaseClose:hover { border-color: #9aa6b2; }
+  .helpbody { overflow-y: auto; overflow-x: hidden; padding: 16px 20px 18px; min-width: 0; }
+  .helphint { display: none; margin: 0 0 10px; padding: 7px 10px; background: #f3f7f4;
+              border: 1px solid #d6e7dd; border-radius: 6px; color: #3d6b54; font-size: 12px; }
+  .helpsec { margin-bottom: 22px; min-width: 0; }
+  .helpsec h3 { margin: 0 0 2px; font-size: 14px; }
+  .helpsec .hcap { margin: 0 0 8px; font-size: 12.5px; color: #6b7280; line-height: 1.6; }
+  .helpfig { width: 100%; max-width: 100%; overflow-x: auto; }
+  .helpfig svg { display: block; width: 100%; height: auto; min-width: 560px; }
+  .helpnote { margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed #e2e6eb;
+              font-size: 12px; color: #6b7280; line-height: 1.7; }
+  .helpnote b { color: #3f4650; }
+  .helpfoot { flex: none; padding: 11px 18px; border-top: 1px solid #e2e2e2;
+              background: #f7f8fa; text-align: right; }
+  #helpOk, #aboutOk, #contactOk, #showcaseOk { padding: 8px 22px; font-size: 13px; font-weight: 600; cursor: pointer;
+            border: 1px solid #3fa97e; border-radius: 6px; background: #3fa97e; color: #fff; }
+  #helpOk:hover, #aboutOk:hover, #contactOk:hover, #showcaseOk:hover { filter: brightness(1.06); }
+  .contactline { margin: 0 0 10px; font-size: 14px; line-height: 1.8; color: #333; }
+  .contactline b { color: #2e8a66; }
+  .showcase-empty { padding: 26px 18px; border: 1px dashed #c8ccd2; border-radius: 8px;
+                    text-align: center; color: #777; font-size: 13px; line-height: 1.8; }
+  .aboutsec { margin-bottom: 15px; }
+  .aboutsec h3 { margin: 0 0 4px; font-size: 13.5px; }
+  .aboutsec p { margin: 0 0 6px; font-size: 12.5px; line-height: 1.7; color: #444; }
+  .aboutsec ul { margin: 0; padding-left: 18px; font-size: 12.5px; line-height: 1.7; color: #444; }
+  #openAbout { margin-top: 6px; padding: 5px 10px; font-size: 12px; color: #2e8a66;
+               background: #fff; border: 1px solid #b9c0c9; border-radius: 6px; cursor: pointer; }
+  #openAbout:hover { border-color: #3fa97e; }
+  #copyright { display: flex; align-items: center; gap: 8px; }
+  #copyright p { margin: 0; flex: 1; line-height: 1.6; }
+  #openAbout { margin-top: 0; flex: none; }
+  .about-accept { margin: 20px 0 4px; text-align: center; font-size: 14px; font-weight: 700; color: #2b3038; }
+  @media (max-width: 700px) {
+    #app { flex-direction: column; }
+    #panel { width: 100%; height: 46%; border-right: none; border-bottom: 1px solid #ddd; }
+    #viewwrap { height: 54%; }
+    .helpbox { width: 94vw; max-width: 94vw; max-height: 88vh; }
+    .helphead { padding: 10px 12px; }
+    .helphead .hsub { display: none; }
+    .helpbody { padding: 12px 12px 14px; }
+    .helphint { display: block; }
+    .helpfig svg { min-width: 520px; }
+    #mapSearchPanel { left: 8px; right: 8px; top: 8px; width: auto; max-height: 48%; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="panel">
+    <nav id="topnav">
+      <button id="navGuide">使用指南</button>
+      <button id="navTerms">使用条款</button>
+      <button id="navContact">联系作者</button>
+      <button id="navShowcase">效果展示</button>
+    </nav>
+    <!-- 选择拍摄目标 -->
+    <div class="sec-title">选择拍摄目标 <span class="q" data-note="secTarget">?</span></div>
+    <div class="pair">
+      <div>
+        <label>目标发射工位 <span class="q" data-note="site">?</span></label>
+        <select id="site"></select>
+      </div>
+      <div>
+        <label>火箭型号 <span class="q" data-note="rocket">?</span></label>
+        <select id="model"></select>
+      </div>
+    </div>
+    <div class="bigline"></div>
+
+    <!-- 选择拍摄地点 -->
+    <div class="sec-title">选择拍摄地点 <span class="q" data-note="secLoc">?</span></div>
+    <div class="locblock">
+      <div class="locinputs">
+        <div class="loclabel">手动输入</div>
+        <div class="triple">
+          <div>
+            <label>距离 <span class="q" data-note="distance">?</span></label>
+            <input id="distance" type="number" value="450" step="any" />
+          </div>
+          <div>
+            <label>方位角 <span class="q" data-note="azimuth">?</span></label>
+            <input id="azimuth" type="number" value="0" step="any" />
+          </div>
+          <div>
+            <label>相对高度 <span class="q" data-note="height">?</span></label>
+            <input id="height" type="number" value="0" step="any" />
+          </div>
+        </div>
+      </div>
+      <div class="vsplit"></div>
+      <button id="openMap">地图选点 <span class="q" data-note="map">?</span></button>
+    </div>
+    <div class="bigline"></div>
+
+    <!-- 选择拍摄设备 -->
+    <div class="sec-title">选择拍摄设备 <span class="q" data-note="secDevice">?</span></div>
+    <div id="modebtns">
+      <button id="modeCamera" class="modebtn active">相机</button>
+      <button id="modePhone" class="modebtn">手机</button>
+      <button id="modeOther" class="modebtn">其他</button>
+    </div>
+
+    <div id="grpCamera" class="grp">
+      <h3 class="mid">选择机身 <span class="q" data-note="camBody">?</span></h3>
+      <div class="pair">
+        <div><label>品牌</label><select id="camBrand"></select></div>
+        <div><label>型号</label><select id="camModel"></select></div>
+      </div>
+      <div class="searchwrap">
+        <input id="camSearch" class="modelsearch" type="text" placeholder="搜索机身型号（如 Z8、R5）" autocomplete="off" />
+        <div id="camSearchRes" class="searchres"></div>
+      </div>
+      <h3 class="mid">选择镜头 <span class="q" data-note="camLens">?</span></h3>
+      <div class="lensrow">
+        <div class="lr-brand"><label>品牌</label><select id="lensBrand"></select></div>
+        <div class="lr-model"><label>型号</label><select id="lensModel"></select></div>
+        <div class="lr-tc">
+          <label>增倍镜</label>
+          <select id="tc">
+            <option value="1">无（1.0×）</option>
+            <option value="1.4">1.4×</option>
+            <option value="1.7">1.7×</option>
+            <option value="2">2.0×</option>
+            <option value="3">3.0×</option>
+          </select>
+        </div>
+      </div>
+      <div class="searchwrap">
+        <input id="lensSearch" class="modelsearch" type="text" placeholder="搜索镜头型号/焦距（如 100-500、50mm）" autocomplete="off" />
+        <div id="lensSearchRes" class="searchres"></div>
+      </div>
+      <div class="focalrow">
+        <label>焦距 focal (mm) <span class="q" data-note="focal">?</span></label>
+        <span id="focalReadout">200 mm</span>
+      </div>
+      <input id="focal" type="number" value="200" step="any" />
+      <input id="focalSlider" type="range" min="24" max="200" step="1" value="200" style="display:none" />
+    </div>
+
+    <div id="grpPhone" class="grp" style="display:none">
+      <h3 class="mid">选择你使用的手机 <span class="q" data-note="phoneModel">?</span></h3>
+      <div class="pair">
+        <div><label>品牌</label><select id="phoneBrand"></select></div>
+        <div><label>型号</label><select id="phoneModel"></select></div>
+      </div>
+      <div class="searchwrap">
+        <input id="phoneSearch" class="modelsearch" type="text" placeholder="搜索手机型号（如 S24 Ultra、X100 Pro）" autocomplete="off" />
+        <div id="phoneSearchRes" class="searchres"></div>
+      </div>
+      <label>放大倍率 <span class="q" data-note="zoom">?</span></label>
+      <input id="zoom" type="range" min="0.5" max="50" step="0.1" value="1" />
+      <input id="zoomNum" type="number" value="1" step="0.1" min="0.5" max="50" />
+      <div id="phoneStops"></div>
+    </div>
+
+    <div id="grpOther" class="grp" style="display:none">
+      <h3 class="mid">选择你使用的设备 <span class="q" data-note="otherDev">?</span></h3>
+      <div class="pair">
+        <div><label>品牌</label><select id="otherBrand"></select></div>
+        <div><label>型号</label><select id="otherModel"></select></div>
+      </div>
+      <div class="searchwrap">
+        <input id="otherSearch" class="modelsearch" type="text" placeholder="搜索设备型号（如 HERO13、X4）" autocomplete="off" />
+        <div id="otherSearchRes" class="searchres"></div>
+      </div>
+    </div>
+
+    <div id="warn"></div>
+    <div class="bigline"></div>
+
+    <!-- 手动调整构图 -->
+    <div class="sec-title">手动调整构图 <span class="q" data-note="secAdjust">?</span></div>
+    <label>构图角度 (°) <span class="q" data-note="roll">?</span></label>
+    <div class="rollrow">
+      <input id="rollSlider" type="range" min="-180" max="180" step="0.5" value="0" />
+      <input id="rollDeg" type="number" value="0" step="any" />
+    </div>
+    <div class="comprow">
+      <div class="orientbtns">
+        <button id="rollH">水平</button>
+        <button id="rollV">竖直</button>
+      </div>
+      <div class="radiosblock">
+        <label>旋转方式 <span class="q" data-note="compmode">?</span></label>
+        <div class="radios">
+          <label class="radio"><input type="radio" name="compmode" value="frame" checked /> 画框转</label>
+          <label class="radio"><input type="radio" name="compmode" value="content" /> 画面转</label>
+        </div>
+      </div>
+    </div>
+    <div class="stepblock">
+      <label>步长 (度)</label>
+      <input id="step" type="number" value="0.2" step="0.1" min="0.1" max="10" />
+    </div>
+    <div id="turnbtns">
+      <button id="pitchUp">俯仰 ↑</button>
+      <button id="pitchDown">俯仰 ↓</button>
+      <button id="yawLeft">偏转 ←</button>
+      <button id="yawRight">偏转 →</button>
+    </div>
+    <button id="resetOffsets" class="wide sec">视角复位</button>
+    <div id="offsetLabel">俯仰 +0.0° / 偏转 +0.0°</div>
+    <div class="bigline"></div>
+
+    <!-- 信息显示 -->
+    <div class="sec-title">信息显示</div>
+    <div id="info"></div>
+
+    <div id="btns">
+      <button id="reset" class="sec">参数复位</button>
+      <button id="export">导出图片</button>
+    </div>
+    <div id="status">正在加载…</div>
+
+    <div id="copyright">
+      <p>使用本工具即表示同意使用条款</p>
+      <button id="openAbout">使用条款</button>
+    </div>
+  </div>
+  <div id="viewwrap"><canvas id="view"></canvas></div>
+</div>
+
+<!-- 悬浮气泡 -->
+<div id="tip"></div>
+
+<!-- 地图选点弹层 -->
+<div id="mapModal">
+  <div class="mapbox">
+    <div class="mapsearch">
+      <input id="mapSearchInput" type="text" placeholder="输入地名 / 地址 / 商家名（如：星芒一号火箭观礼）" autocomplete="off" />
+      <button id="mapSearchBtn">搜索</button>
+      <div id="mapSuggestions" class="mapsug"></div>
+    </div>
+    <div class="mapscopes">
+      <button data-scope="nearby" class="on">附近 50km</button>
+      <button data-scope="city">文昌</button>
+      <button data-scope="nation">全国</button>
+    </div>
+    <div class="maplayers">
+      <button data-layer="sat" class="on">卫星</button>
+      <button data-layer="standard">标准</button>
+    </div>
+    <div id="mapWrap">
+      <div id="bmap"></div>
+      <div id="mapSearchPanel">
+        <div class="msp-head"><span>搜索结果</span><button id="mapSearchPanelClose" aria-label="关闭">&times;</button></div>
+        <div id="mapSearchList"></div>
+        <div id="mapSearchPage" class="msp-page"></div>
+      </div>
+    </div>
+    <div id="mapinfo">在地图上点一下，或在上方搜索，选择你的拍摄地点</div>
+    <div class="mapbtns">
+      <button id="mapCancel" class="sec">取消</button>
+      <button id="mapApply">应用（写入距离 / 方位角）</button>
+    </div>
+  </div>
+</div>
+
+<!-- 参数说明弹层 -->
+<div id="helpModal">
+  <div class="helpbox">
+    <div class="helphead">
+      <h2>使用指南 / 参数说明</h2>
+      <span class="hsub">三张图讲清方位角、距离、相对高度和构图角度</span>
+      <button id="helpClose" aria-label="关闭">&times;</button>
+    </div>
+    <div class="helpbody">
+      <div class="helphint">手机上看不清时，图示区域可以左右滑动。</div>
+
+      <!-- 图1 俯视图 -->
+      <div class="helpsec">
+        <h3>图1 · 俯视图：方位角与距离</h3>
+        <p class="hcap">从正上方看目标发射工位和拍摄地点。方位角从正北开始按顺时针计算。</p>
+        <div class="helpfig">
+          <svg viewBox="0 0 640 380" role="img" aria-label="俯视图：方位角与水平距离">
+            <defs>
+              <marker id="help-f1-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#3fa97e" />
+              </marker>
+            </defs>
+
+            <rect x="0.5" y="0.5" width="639" height="379" rx="8" fill="#fff" stroke="#e6e9ee" />
+
+            <circle cx="300" cy="190" r="118" fill="#fbfcfd" stroke="#d8dde4" stroke-width="1.5" />
+            <line x1="300" y1="72" x2="300" y2="308" stroke="#e2e6eb" stroke-width="1" stroke-dasharray="4 6" />
+            <line x1="182" y1="190" x2="418" y2="190" stroke="#e2e6eb" stroke-width="1" stroke-dasharray="4 6" />
+
+            <path d="M300 72 A118 118 0 0 1 383.44 106.56"
+                  fill="none" stroke="#3fa97e" stroke-width="3" marker-end="url(#help-f1-green)" />
+            <text x="352" y="66" font-size="13" font-weight="600" fill="#3fa97e">方位角 45°</text>
+
+            <line x1="300" y1="190" x2="383.44" y2="106.56"
+                  stroke="#3fa97e" stroke-width="2" stroke-dasharray="8 6" />
+            <text x="352" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="#3fa97e"
+                  stroke="#fff" stroke-width="4" paint-order="stroke" stroke-linejoin="round">距离</text>
+
+            <circle cx="300" cy="190" r="9" fill="#e74c3c" stroke="#fff" stroke-width="3" />
+            <text x="300" y="224" text-anchor="middle" font-size="13.5" font-weight="600" fill="#e74c3c">目标发射工位</text>
+
+            <circle cx="383.44" cy="106.56" r="9" fill="#2d7ff9" stroke="#fff" stroke-width="3" />
+            <text x="398" y="101" font-size="13.5" font-weight="600" fill="#2d7ff9">拍摄地点</text>
+
+            <text x="300" y="56" text-anchor="middle" font-size="14.5" font-weight="700">北 0°</text>
+            <text x="432" y="195" font-size="14.5" font-weight="700">东 90°</text>
+            <text x="300" y="340" text-anchor="middle" font-size="14.5" font-weight="700">南 180°</text>
+            <text x="168" y="195" text-anchor="end" font-size="14.5" font-weight="700">西 270°</text>
+
+            <g transform="translate(454,258)">
+              <line x1="0" y1="0" x2="30" y2="0" stroke="#3fa97e" stroke-width="3" />
+              <text x="40" y="4" font-size="12.5" fill="#5d6672">绿色弧线：方位角</text>
+              <line x1="0" y1="26" x2="30" y2="26" stroke="#3fa97e" stroke-width="2" stroke-dasharray="8 6" />
+              <text x="40" y="30" font-size="12.5" fill="#5d6672">绿色虚线：距离</text>
+            </g>
+          </svg>
+        </div>
+        <p class="helpnote">
+          <b>0° = 正北</b>，顺时针增加：东 90°、南 180°、西 270°。地图选点会自动回填距离和方位角。<br />
+          距离 = 相机到火箭轴线的水平距离。这是拍摄地点相对目标发射工位的位置角，不是画面里箭体的旋转方向。
+        </p>
+      </div>
+
+      <!-- 图2 侧视图 -->
+      <div class="helpsec">
+        <h3>图2 · 侧视图：相对高度与距离</h3>
+        <p class="hcap">从侧面看相机和火箭。相对高度记的是“火箭底部相对相机”的高度差。</p>
+        <div class="helpfig">
+          <svg viewBox="0 0 640 400" role="img" aria-label="侧视图：相对高度与水平距离">
+            <defs>
+              <marker id="help-f2-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#3fa97e" />
+              </marker>
+              <marker id="help-f2-green-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M10,0 L0,5 L10,10 z" fill="#3fa97e" />
+              </marker>
+              <marker id="help-f2-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#2d7ff9" />
+              </marker>
+            </defs>
+
+            <rect x="0.5" y="0.5" width="639" height="399" rx="8" fill="#fff" stroke="#e6e9ee" />
+            <line x1="320" y1="28" x2="320" y2="372" stroke="#e2e6eb" stroke-width="1.5" stroke-dasharray="5 7" />
+
+            <text x="170" y="32" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2b3038">h &gt; 0：火箭比相机高</text>
+            <text x="480" y="32" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2b3038">h &lt; 0：相机比火箭高</text>
+
+            <line x1="42" y1="320" x2="302" y2="320" stroke="#8a93a0" stroke-width="2" />
+
+            <rect x="57" y="294" width="26" height="18" rx="3" fill="#33373d" />
+            <circle cx="70" cy="303" r="7" fill="#2d7ff9" />
+            <line x1="70" y1="312" x2="70" y2="320" stroke="#33373d" stroke-width="3" />
+            <text x="70" y="346" text-anchor="middle" font-size="12.5" fill="#5d6672">相机</text>
+
+            <path d="M232 96 L240 52 L248 96 Z" fill="#9aa1ab" />
+            <rect x="232" y="96" width="16" height="119" fill="#9aa1ab" />
+            <text x="266" y="128" font-size="12.5" fill="#5d6672">火箭</text>
+
+            <line x1="84" y1="320" x2="230" y2="320" stroke="#3fa97e" stroke-width="2.5"
+                  marker-end="url(#help-f2-green)" marker-start="url(#help-f2-green-start)" />
+            <text x="157" y="342" text-anchor="middle" font-size="12.5" font-weight="600" fill="#3fa97e">距离</text>
+
+            <line x1="264" y1="320" x2="264" y2="215" stroke="#3fa97e" stroke-width="2.5"
+                  marker-end="url(#help-f2-green)" marker-start="url(#help-f2-green-start)" />
+            <text x="272" y="264" font-size="11.5" fill="#5d6672">相对高度</text>
+            <text x="272" y="284" font-size="13" font-weight="700" fill="#3fa97e">h（正）</text>
+
+            <line x1="84" y1="303" x2="240" y2="156" stroke="#2d7ff9" stroke-width="1.8"
+                  stroke-dasharray="6 5" marker-end="url(#help-f2-blue)" />
+            <text x="150" y="196" text-anchor="middle" font-size="12" font-weight="600" fill="#2d7ff9">视线（自动对准）</text>
+
+            <path d="M119 303 A35 35 0 0 0 111.6 281.4" fill="none" stroke="#2d7ff9" stroke-width="1.4" />
+            <text x="123" y="290" font-size="11.5" fill="#2d7ff9">仰角</text>
+
+            <line x1="350" y1="90" x2="610" y2="90" stroke="#9aa3ad" stroke-width="1.5" stroke-dasharray="5 6" />
+            <text x="350" y="112" font-size="11.5" fill="#7b8490">相机水平线</text>
+
+            <rect x="387" y="64" width="26" height="18" rx="3" fill="#33373d" />
+            <circle cx="400" cy="73" r="7" fill="#2d7ff9" />
+            <text x="400" y="50" text-anchor="middle" font-size="12.5" fill="#5d6672">相机</text>
+
+            <path d="M532 170 L540 126 L548 170 Z" fill="#9aa1ab" />
+            <rect x="532" y="170" width="16" height="120" fill="#9aa1ab" />
+            <text x="558" y="160" font-size="12.5" fill="#5d6672">火箭</text>
+
+            <line x1="414" y1="90" x2="530" y2="90" stroke="#3fa97e" stroke-width="2.5"
+                  marker-end="url(#help-f2-green)" marker-start="url(#help-f2-green-start)" />
+            <text x="472" y="80" text-anchor="middle" font-size="12.5" font-weight="600" fill="#3fa97e">距离</text>
+
+            <line x1="566" y1="90" x2="566" y2="290" stroke="#3fa97e" stroke-width="2.5"
+                  marker-end="url(#help-f2-green)" marker-start="url(#help-f2-green-start)" />
+            <text x="576" y="196" font-size="13" font-weight="700" fill="#3fa97e">h（负）</text>
+
+            <line x1="414" y1="94" x2="540" y2="230" stroke="#2d7ff9" stroke-width="1.8"
+                  stroke-dasharray="6 5" marker-end="url(#help-f2-blue)" />
+            <text x="470" y="142" text-anchor="middle" font-size="12" font-weight="600" fill="#2d7ff9">视线</text>
+
+            <text x="480" y="340" text-anchor="middle" font-size="11.5" fill="#7b8490">相机比火箭高时，h 为负，箭头向下</text>
+          </svg>
+        </div>
+        <p class="helpnote">
+          <b>相对高度 = 火箭底部 − 相机高度。</b>正数 = 火箭比相机高；负数 = 相机比火箭高（比如楼顶/山坡）。<br />
+          距离 = 相机到火箭轴线的水平距离；程序自动把视线对准箭体中心。
+        </p>
+      </div>
+
+      <!-- 图3 构图角度 -->
+      <div class="helpsec">
+        <h3>图3 · 构图角度：横竖与旋转方式</h3>
+        <p class="hcap">构图角度控制画面的旋转量；“画框转”和“画面转”是两种不同的旋转方式。</p>
+        <div class="helpfig">
+          <svg viewBox="0 0 640 520" role="img" aria-label="构图角度：横竖构图与画框转、画面转">
+            <rect x="0.5" y="0.5" width="639" height="519" rx="8" fill="#fff" stroke="#e6e9ee" />
+
+            <defs>
+              <g id="help-f3-rocket">
+                <path d="M-8 -22 L0 -48 L8 -22 Z" fill="#9aa1ab" />
+                <rect x="-8" y="-22" width="16" height="70" fill="#9aa1ab" />
+              </g>
+              <g id="help-f3-mini">
+                <path d="M-4.5 -10 L0 -24 L4.5 -10 Z" fill="#9aa1ab" />
+                <rect x="-4.5" y="-10" width="9" height="34" fill="#9aa1ab" />
+              </g>
+            </defs>
+
+            <text x="170" y="38" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2b3038">0°（相机模式默认横构图）</text>
+            <rect x="60" y="55" width="220" height="124" rx="2" fill="#fbfcfd" stroke="#2b3038" stroke-width="2" />
+            <use href="#help-f3-rocket" transform="translate(170 117)" />
+
+            <text x="497" y="32" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2b3038">90°（相机模式竖 / 手机模式横）</text>
+            <rect x="440" y="45" width="115" height="205" rx="2" fill="#fbfcfd" stroke="#2b3038" stroke-width="2" />
+            <use href="#help-f3-rocket" transform="translate(497.5 147.5)" />
+
+            <text x="150" y="282" text-anchor="middle" font-size="12.5" font-weight="600" fill="#5d6672">左转：逆时针（负）</text>
+            <text x="470" y="282" text-anchor="middle" font-size="12.5" font-weight="600" fill="#5d6672">右转：顺时针（正）</text>
+            <line x1="70" y1="306" x2="570" y2="306" stroke="#c5ccd6" stroke-width="2" />
+            <line x1="70" y1="298" x2="70" y2="314" stroke="#8a93a0" stroke-width="2" />
+            <line x1="320" y1="298" x2="320" y2="314" stroke="#8a93a0" stroke-width="2" />
+            <line x1="570" y1="298" x2="570" y2="314" stroke="#8a93a0" stroke-width="2" />
+            <text x="70" y="332" text-anchor="middle" font-size="12" fill="#7b8490">-180°</text>
+            <text x="320" y="332" text-anchor="middle" font-size="12" font-weight="700" fill="#2b3038">0°</text>
+            <text x="570" y="332" text-anchor="middle" font-size="12" fill="#7b8490">+180°</text>
+
+            <line x1="320" y1="356" x2="320" y2="508" stroke="#e2e6eb" stroke-width="1.5" stroke-dasharray="5 7" />
+
+            <text x="180" y="374" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3038">画框转</text>
+            <text x="180" y="392" text-anchor="middle" font-size="11.5" fill="#7b8490">框转，箭体仍竖直</text>
+            <rect x="130" y="422" width="100" height="60" rx="2" fill="#fbfcfd" stroke="#2b3038" stroke-width="2"
+                  transform="rotate(25 180 452)" />
+            <use href="#help-f3-mini" transform="translate(180 452)" />
+
+            <text x="460" y="374" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3038">画面转</text>
+            <text x="460" y="392" text-anchor="middle" font-size="11.5" fill="#7b8490">框不动，内容绕光轴转</text>
+            <rect x="410" y="422" width="100" height="60" rx="2" fill="#fbfcfd" stroke="#2b3038" stroke-width="2" />
+            <g transform="rotate(25 460 452)">
+              <use href="#help-f3-mini" transform="translate(460 452)" />
+            </g>
+          </svg>
+        </div>
+        <p class="helpnote">
+          <b>画框转：</b>取景框旋转，火箭保持竖直（相机模式 90°=竖构图，手机模式 90°=横构图）。<br />
+          <b>画面转：</b>取景框不动，画面内容绕光轴旋转。<br />
+          相机模式默认横构图，手机模式默认竖构图；0° 是各自默认方向，所以手机模式的 90° 反而变成横构图。两张小图以 25° 为例。
+        </p>
+      </div>
+
+    </div>
+    <div class="helpfoot"><button id="helpOk">知道了</button></div>
+  </div>
+</div>
+
+<!-- 关于 / 版权与使用声明 -->
+<div id="aboutModal">
+  <div class="helpbox">
+    <div class="helphead">
+      <h2>使用条款 / 版权与声明</h2>
+      <span class="hsub">完整版</span>
+      <button id="aboutClose" aria-label="关闭">&times;</button>
+    </div>
+    <div class="helpbody">
+      <div class="aboutsec">
+        <h3>工具性质</h3>
+        <p>本工具为个人非商业项目，与航天机构、火箭研制单位及相机/手机/镜头厂商均无隶属或合作关系；相关名称、商标仅用于识别，归各自权利人所有。</p>
+        <p>本工具导出的效果图为“理想状态下的预估”，仅考虑上述参数。实际效果还会受遮挡、烟雾、天气、光照、设备等众多因素影响。</p>
+        <p>不同相机/手机的传感器尺寸、裁切模式（含视频裁切）和镜头像场不同，实际画面范围可能与模拟结果存在差异。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>模型与火箭名称</h3>
+        <p>本工具中的火箭外形模型作者为 @赛博航天基地，版权归 @赛博航天基地 所有；火箭外形仅使用公开资料，不含内部结构或性能参数。CZ-8A、CZ-12 等名称仅用于识别，不代表官方或关联。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>设备与数据</h3>
+        <p>相机、镜头、手机的品牌、型号和参数来自公开资料整理，可能存在误差，不构成购买建议；以官方规格为准。</p>
+        <p>手机最大光学倍率按厂商标称/公开规格整理；运动相机/360 视场角为近似值。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>使用范围</h3>
+        <p>本工具及导出图片仅供非商业性学习与交流使用，禁止任何商业用途；使用者应对导出图片的使用自行负责。</p>
+        <p>本工具按现状提供，不提供任何明示或暗示的保证；使用风险由使用者自行承担。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>隐私</h3>
+        <p>导出图片包含拍摄经纬度，公开分享前请自行评估位置隐私。地图服务由百度提供，受其服务条款和隐私政策约束。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>安全与法规</h3>
+        <p>本工具仅用于拍摄构图预演，不构成官方、工程或拍摄安全建议；请遵守发射场、空域及当地法律法规，勿进入警戒区或干扰发射。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>第三方组件</h3>
+        <p>地图使用百度地图 JS API，受百度地图开放平台服务条款约束。</p>
+      </div>
+      <div class="aboutsec">
+        <h3>联系与接受</h3>
+        <p>本工具为 @北斗_玉衡 和大肥鱼合作编写的「火箭摄影效果模拟工具」 。如有疑问，可通过顶部「联系作者」联系。</p>
+      </div>
+      <div class="about-accept">使用本程序即表示已理解并认同以上条款</div>
+    </div>
+    <div class="helpfoot"><button id="aboutOk">知道了</button></div>
+  </div>
+</div>
+
+<!-- 联系作者 -->
+<div id="contactModal">
+  <div class="helpbox">
+    <div class="helphead">
+      <h2>联系作者</h2>
+      <button id="contactClose" aria-label="关闭">&times;</button>
+    </div>
+    <div class="helpbody">
+      <p class="contactline">作者：<b>@北斗_玉衡</b></p>
+      <p class="contactline">QQ 群：<b>538298621</b></p>
+      <p class="contactline">微信：<b>lldyuheng</b></p>
+    </div>
+    <div class="helpfoot"><button id="contactOk">知道了</button></div>
+  </div>
+</div>
+
+<!-- 效果展示 -->
+<div id="showcaseModal">
+  <div class="helpbox">
+    <div class="helphead">
+      <h2>效果展示</h2>
+      <span class="hsub">模拟 vs 实拍</span>
+      <button id="showcaseClose" aria-label="关闭">&times;</button>
+    </div>
+    <div class="helpbody">
+      <div class="showcase-empty">素材准备中。后续把模拟图和实拍图放进来，做成对比展示。</div>
+    </div>
+    <div class="helpfoot"><button id="showcaseOk">知道了</button></div>
+  </div>
+</div>
+
+<!-- 百度地图 JS API GL（地图显示；搜索走本地服务端代理） -->
+<script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=Q1h6DH40XKv9VvejC147VhoftN5NGJQ9"></script>
+<!-- 本地内置的库 -->
+<script src="libs/three.min.js"></script>
+<script src="libs/OBJLoader.js"></script>
+<script src="libs/MTLLoader.js"></script>
+<script src="libs/OrbitControls.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

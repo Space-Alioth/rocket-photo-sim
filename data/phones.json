@@ -1,0 +1,4926 @@
+[
+  {
+    "brand": "Apple",
+    "model": "iPhone 13",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 13 Pro",
+    "mainEquiv": 26,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 3,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 13 Pro Max",
+    "mainEquiv": 26,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 3,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 14",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 14 Plus",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 14 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      },
+      {
+        "zoom": 3,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 14 Pro Max",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      },
+      {
+        "zoom": 3,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 15",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 15 Plus",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 15 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      },
+      {
+        "zoom": 3,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 15 Pro Max",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 16",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 16 Plus",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 16 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 16 Pro Max",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 16e",
+    "mainEquiv": 26,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2,
+        "equiv": 52
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 17",
+    "mainEquiv": 24,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 17 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 8,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 4,
+        "equiv": 96
+      },
+      {
+        "zoom": 8,
+        "equiv": 192
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 17 Pro Max",
+    "mainEquiv": 24,
+    "maxOptical": 8,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 4,
+        "equiv": 96
+      },
+      {
+        "zoom": 8,
+        "equiv": 192
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone SE 3",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone SE 4",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone SE（第3代）",
+    "mainEquiv": 28,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 28
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A06",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A06s",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A15",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A16",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A25",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A26",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A35",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A36",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A53",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A54",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A55",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy A56",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy F54",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy F55",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy F56",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy M05",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy M15",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy M54",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy M55",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy M56",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S21 FE",
+    "mainEquiv": 26,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 2.92,
+        "equiv": 76
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S22",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.88,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S22 Ultra",
+    "mainEquiv": 24,
+    "maxOptical": 10,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.88,
+        "equiv": 69
+      },
+      {
+        "zoom": 10,
+        "equiv": 240
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S22+",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.88,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S23",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S23 FE",
+    "mainEquiv": 24,
+    "maxOptical": 3.13,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3.13,
+        "equiv": 75
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S23 Ultra",
+    "mainEquiv": 24,
+    "maxOptical": 10,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      },
+      {
+        "zoom": 10,
+        "equiv": 240
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S23+",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S24",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S24 FE",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S24 Ultra",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S24+",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S25",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S25 Edge",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S25 FE",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S25 Ultra",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy S25+",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy XCover6 Pro",
+    "mainEquiv": 28,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27.5
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Y55",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Flip 3",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Flip 5",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Flip 6",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Flip 7",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Fold 7",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "Galaxy Z Fold6",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.87,
+        "equiv": 66
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "W23",
+    "mainEquiv": 23,
+    "maxOptical": 2.9,
+    "lenses": [
+      {
+        "zoom": 0.52,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.87,
+        "equiv": 66
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "W23 Flip",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "W24",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.52,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.87,
+        "equiv": 66
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "W24 Flip",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "三星",
+    "model": "W25 Flip",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Enjoy 60X / Changxiang 60X",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Enjoy 70X",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 40E Pro",
+    "mainEquiv": 23,
+    "maxOptical": 5.43,
+    "lenses": [
+      {
+        "zoom": 0.78,
+        "equiv": 18
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5.43,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 50",
+    "mainEquiv": 24,
+    "maxOptical": 5.21,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5.21,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 50 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 50 RS PORSCHE DESIGN",
+    "mainEquiv": 24,
+    "maxOptical": 3.75,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3.75,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 60",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 60 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 95
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 60 Pro+",
+    "mainEquiv": 24,
+    "maxOptical": 3.75,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3.75,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 60 RS Ultimate Design",
+    "mainEquiv": 24,
+    "maxOptical": 3.75,
+    "lenses": [
+      {
+        "zoom": 0.54,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3.75,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 70 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 95
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 70 RS Ultimate",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 95
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 80",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 95
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 80 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 80 Pro Max",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate 80 RS 非凡大师",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate X 3",
+    "mainEquiv": 25,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.52,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      },
+      {
+        "zoom": 5,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate X5",
+    "mainEquiv": 23,
+    "maxOptical": 5.43,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5.43,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate Xs 2",
+    "mainEquiv": 23,
+    "maxOptical": 3.7,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.7,
+        "equiv": 85
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate XT Ultimate Design",
+    "mainEquiv": 24,
+    "maxOptical": 5.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5.5,
+        "equiv": 132
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Mate XTs Ultimate Design",
+    "mainEquiv": 24,
+    "maxOptical": 5.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5.5,
+        "equiv": 132
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 10",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 10 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 10z",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 11",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 11 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 11 Ultra",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 12 Lite",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 12 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 12 SE",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 12 Ultra",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova 12i",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova 13 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3,
+        "equiv": 81
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova Flip",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Nova Y71",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26.5
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "nova Y90",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "P50E",
+    "mainEquiv": 23,
+    "maxOptical": 5.43,
+    "lenses": [
+      {
+        "zoom": 0.7,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5.43,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "P60",
+    "mainEquiv": 25,
+    "maxOptical": 5.1,
+    "lenses": [
+      {
+        "zoom": 0.53,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24.5
+      },
+      {
+        "zoom": 5.1,
+        "equiv": 125
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "P60 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Pocket 2",
+    "mainEquiv": 23,
+    "maxOptical": 3.48,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.48,
+        "equiv": 80
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Pura 70",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Pura 70 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 3.78,
+    "lenses": [
+      {
+        "zoom": 0.53,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 24.5
+      },
+      {
+        "zoom": 3.78,
+        "equiv": 93
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Pura 70 Ultra",
+    "mainEquiv": 27,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 95
+      }
+    ]
+  },
+  {
+    "brand": "华为",
+    "model": "Pura 80 Ultra",
+    "mainEquiv": 27,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 5,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "11T Pro",
+    "mainEquiv": 26,
+    "maxOptical": 1.92,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      },
+      {
+        "zoom": 1.92,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12 Pro Dimensity",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 0.63,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12S",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 0.63,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12S Pro",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12S Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 5.22,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5.22,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "12X",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "13",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "13 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "13 Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "13T",
+    "mainEquiv": 24,
+    "maxOptical": 2.08,
+    "lenses": [
+      {
+        "zoom": 0.63,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.08,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "13T Pro",
+    "mainEquiv": 23,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2,
+        "equiv": 46
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14 Civi",
+    "mainEquiv": 25,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      },
+      {
+        "zoom": 2,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14 Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 75
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14T",
+    "mainEquiv": 23,
+    "maxOptical": 2.2,
+    "lenses": [
+      {
+        "zoom": 0.65,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.17,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "14T Pro",
+    "mainEquiv": 23,
+    "maxOptical": 2.61,
+    "lenses": [
+      {
+        "zoom": 0.65,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.61,
+        "equiv": 60
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "15",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "15 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 74
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "15 Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 4.3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 74
+      },
+      {
+        "zoom": 4.3,
+        "equiv": 99
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "15S Pro",
+    "mainEquiv": 23,
+    "maxOptical": 5.22,
+    "lenses": [
+      {
+        "zoom": 0.61,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5.22,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "16",
+    "mainEquiv": 23,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 5,
+        "equiv": 115
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "16 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 74
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Civi 5 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2,
+        "equiv": 46
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Civi 6 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 74
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Mix Flip",
+    "mainEquiv": 23,
+    "maxOptical": 2.04,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2.04,
+        "equiv": 47
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "MIX Flip2",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Mix Fold 3",
+    "mainEquiv": 23,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.65,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.26,
+        "equiv": 75
+      },
+      {
+        "zoom": 5,
+        "equiv": 115
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "MIX Fold 4",
+    "mainEquiv": 23,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.2,
+        "equiv": 74
+      },
+      {
+        "zoom": 5,
+        "equiv": 115
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco C51",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27.4
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco C75",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco C75 NFC",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27.4
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco F6",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco F7",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.58,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco F7 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco M6 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco M7 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco X4 GT",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco X6 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco X7",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "小米",
+    "model": "Poco X7 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "A3 Pro",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27.4
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "A3x",
+    "mainEquiv": 28,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 28.3
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K50i",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K60 Extreme / K60Ultra",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.63,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K70E",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K80",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K80 Extreme / K80Ultr",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K90",
+    "mainEquiv": 24,
+    "maxOptical": 2.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.5,
+        "equiv": 60
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K90 至尊版",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K90 Max",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "K90 Pro Max",
+    "mainEquiv": 24,
+    "maxOptical": 5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 5,
+        "equiv": 120
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 11S",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 11SE",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 11T Pro+",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 12 Pro",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 12T Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 13",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Note 14 Pro+",
+    "mainEquiv": 24,
+    "maxOptical": 2.5,
+    "lenses": [
+      {
+        "zoom": 0.63,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.5,
+        "equiv": 60
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi 13",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi 14C",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi K60",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi K70",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi K70 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 12 Turbo",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 13",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 13 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 4,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      },
+      {
+        "zoom": 4,
+        "equiv": 100
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 13 Pro+",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 13R Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 14 Pro",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 14S",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Note 15 Pro+",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Redmi Turbo 4",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 13
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Turbo 3",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.62,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Turbo 4",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.58,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "红米",
+    "model": "Turbo 4 Pro",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.58,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "A3 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "A5 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "F27 Pro Plus",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find N4 Flip",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find N5",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X6",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 65
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X6 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 65
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X7",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 15
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 65
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X7 Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 6,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 65
+      },
+      {
+        "zoom": 6,
+        "equiv": 135
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X8",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X8 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 6,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      },
+      {
+        "zoom": 6,
+        "equiv": 138
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X8 Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 6,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      },
+      {
+        "zoom": 6,
+        "equiv": 138
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Find X9",
+    "mainEquiv": 23,
+    "maxOptical": 6,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      },
+      {
+        "zoom": 6,
+        "equiv": 138
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Reno 12",
+    "mainEquiv": 23,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2,
+        "equiv": 46
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Reno 12F",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Reno 13",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "OPPO",
+    "model": "Reno 13 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 81
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "S20 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "Ultra",
+    "mainEquiv": 23,
+    "maxOptical": 3.7,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.7,
+        "equiv": 85
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "V40",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "V50",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "V50 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "X90",
+    "mainEquiv": 23,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "vivo",
+    "model": "X90 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 2,
+        "equiv": 50
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "200",
+    "mainEquiv": 24,
+    "maxOptical": 2.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.5,
+        "equiv": 60
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "200 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 2.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2.5,
+        "equiv": 60
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "400 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "90",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic 4 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.91,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.91,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic 5 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.91,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.91,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic 5 Ultimate",
+    "mainEquiv": 23,
+    "maxOptical": 3.91,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.91,
+        "equiv": 90
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic V",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.57,
+        "equiv": 13
+      },
+      {
+        "zoom": 0.87,
+        "equiv": 20
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic V Flip2",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic V3",
+    "mainEquiv": 23,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 81
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic Vs",
+    "mainEquiv": 27,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      },
+      {
+        "zoom": 2.96,
+        "equiv": 80
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic6 Lite",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic6 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 81
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic7 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.5,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.5,
+        "equiv": 81
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Magic8",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "Play 6T",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "X40i",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "X50 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "X50i",
+    "mainEquiv": 27,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 27
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "X60 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "荣耀",
+    "model": "X9b",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "10 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3.35,
+    "lenses": [
+      {
+        "zoom": 0.61,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3.35,
+        "equiv": 77
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "10R 80W",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.65,
+        "equiv": 15
+      },
+      {
+        "zoom": 0.93,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 23.6
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "10T",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.68,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.93,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 23.6
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "11",
+    "mainEquiv": 24,
+    "maxOptical": 2,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 2,
+        "equiv": 48
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "11R",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.67,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.91,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "12",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "12R",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "13",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "9RT",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.58,
+        "equiv": 14
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Ace 2 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.67,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.92,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Ace 2 Pro Genshin Impact Limited",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.67,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.92,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Ace 2V",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.64,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.84,
+        "equiv": 21
+      },
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Ace 3 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Ace 5 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord 4",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE 2",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 26.2
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE 2 Lite",
+    "mainEquiv": 26,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.6,
+        "equiv": 16
+      },
+      {
+        "zoom": 0.84,
+        "equiv": 22
+      },
+      {
+        "zoom": 1,
+        "equiv": 26
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE 3",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE 3 Lite",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE 4 Lite V2",
+    "mainEquiv": 25,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 25
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord CE4 Lite",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Nord N40 SE",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Open",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "一加",
+    "model": "Open 2",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "12 Pro+",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "13 Pro Plus",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "14 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "14 Pro Plus",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "14 Pro+",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "C75",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "GT 6T",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "GT 7 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "GT Neo 6",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "GT5 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      },
+      {
+        "zoom": 3,
+        "equiv": 72
+      }
+    ]
+  },
+  {
+    "brand": "realme",
+    "model": "P3 Pro",
+    "mainEquiv": 24,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 24
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "12 Pro",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "13",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "iQOO 12",
+    "mainEquiv": 23,
+    "maxOptical": 3,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      },
+      {
+        "zoom": 3,
+        "equiv": 69
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "iQOO Neo 10",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "iQOO Neo 9S Pro",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "iQOO Z10 Turbo",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "iQOO Z9 Turbo",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "Neo 10",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  },
+  {
+    "brand": "iQOO",
+    "model": "Neo 10R",
+    "mainEquiv": 23,
+    "maxOptical": 1,
+    "lenses": [
+      {
+        "zoom": 0.5,
+        "equiv": 12
+      },
+      {
+        "zoom": 1,
+        "equiv": 23
+      }
+    ]
+  }
+]
